@@ -1,0 +1,6 @@
+module Pods_cardinative {
+  umbrella header "Pods-cardinative-umbrella.h"
+
+  export *
+  module * { export * }
+}
