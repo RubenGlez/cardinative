@@ -31,7 +31,7 @@ export default function App() {
       <ThemeManagerProvider>
         <SafeAreaProvider>
           <NavigationContainer>
-            <Layout>
+            <Layout type="main">
               <RootStack />
             </Layout>
             <ToastContainer />

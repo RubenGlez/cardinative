@@ -22,3 +22,8 @@ export const StyledTouchableWithoutFeedback = styled.TouchableWithoutFeedback.at
 )`
   flex: 1;
 `
+
+export const ScreenTypeContainer = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.color.bg_1};
+`

@@ -2,35 +2,25 @@ import React from 'react'
 import {
   StyledSafeAreaView,
   StyledKeyboardAvoidingView,
-  StyledTouchableWithoutFeedback
+  StyledTouchableWithoutFeedback,
+  ScreenTypeContainer
 } from './styles'
 import { LayoutProps } from './types'
 
-export default function Layout({
-  children,
-  enableKeyboardAvoidingView = true,
-  enableHideKeyboardOnPress = true
-}: LayoutProps) {
-  return (
-    <StyledSafeAreaView>
-      {enableKeyboardAvoidingView && enableHideKeyboardOnPress && (
-        <StyledKeyboardAvoidingView>
-          <StyledTouchableWithoutFeedback>
-            {children}
-          </StyledTouchableWithoutFeedback>
-        </StyledKeyboardAvoidingView>
-      )}
-      {enableKeyboardAvoidingView && !enableHideKeyboardOnPress && (
-        <StyledKeyboardAvoidingView>{children}</StyledKeyboardAvoidingView>
-      )}
-      {!enableKeyboardAvoidingView && enableHideKeyboardOnPress && (
+export default function Layout({ children, type }: LayoutProps) {
+  if (type === 'main') {
+    return <StyledSafeAreaView>{children}</StyledSafeAreaView>
+  } else if (type === 'form') {
+    return (
+      <StyledKeyboardAvoidingView>
         <StyledTouchableWithoutFeedback>
           {children}
         </StyledTouchableWithoutFeedback>
-      )}
-      {!enableKeyboardAvoidingView && !enableHideKeyboardOnPress && (
-        <>{children}</>
-      )}
-    </StyledSafeAreaView>
-  )
+      </StyledKeyboardAvoidingView>
+    )
+  } else if (type === 'screen') {
+    return <ScreenTypeContainer>{children}</ScreenTypeContainer>
+  }
+
+  return <>{children}</>
 }

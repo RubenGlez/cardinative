@@ -30,8 +30,8 @@ export default function useSigninForm() {
 
   const { handleChange, handleSubmit, values } = useFormik({
     initialValues: {
-      email: '',
-      password: ''
+      email: 'rubenprueba@gmail.com',
+      password: '1234'
     },
     onSubmit: (formValues, { resetForm }) => {
       mutate(formValues)
