@@ -4,17 +4,31 @@ import { StackNavigationProp } from '@react-navigation/stack'
 export type RootStackParamsList = {
   AuthStack: NavigatorScreenParams<AuthStackParamsList>
   MainStack: NavigatorScreenParams<MainStackParamsList>
+  BusinessStack: NavigatorScreenParams<BusinessStackParamsList>
 }
 
 export type AuthStackParamsList = {
-  SignupScreen: undefined
-  SigninScreen: undefined
+  Signup: undefined
+  Signin: undefined
 }
 
 export type MainStackParamsList = {
-  HomeScreen: undefined
-  WalletScreen: undefined
-  SettingsScreen: undefined
+  MainTabsStack: NavigatorScreenParams<MainTabsStackParamsList>
+}
+
+export type BusinessStackParamsList = {
+  BusinessTabsStack: NavigatorScreenParams<BusinessTabsStackParamsList>
+  CreateCompany: undefined
+}
+
+export type MainTabsStackParamsList = {
+  Home: undefined
+  Wallet: undefined
+  Settings: undefined
+}
+
+export type BusinessTabsStackParamsList = {
+  BusinessHome: undefined
 }
 
 export type RootNavigation = StackNavigationProp<RootStackParamsList>

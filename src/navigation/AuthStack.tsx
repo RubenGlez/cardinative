@@ -1,23 +1,18 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { AuthStackParamsList } from './types'
-import { SigninScreen, SignupScreen } from '@/screens'
+import { SIGNIN_SCREEN, SIGNUP_SCREEN } from './constants'
+import { Signin, Signup } from '@/screens'
 
 const { Navigator, Screen } = createStackNavigator<AuthStackParamsList>()
 
 export function AuthStack() {
   return (
-    <Navigator initialRouteName="SigninScreen">
-      <Screen
-        name="SignupScreen"
-        component={SignupScreen}
-        options={{ headerShown: false }}
-      />
-      <Screen
-        name="SigninScreen"
-        component={SigninScreen}
-        options={{ headerShown: false }}
-      />
+    <Navigator
+      initialRouteName={SIGNIN_SCREEN}
+      screenOptions={{ headerShown: false }}>
+      <Screen name={SIGNUP_SCREEN} component={Signup} />
+      <Screen name={SIGNIN_SCREEN} component={Signin} />
     </Navigator>
   )
 }
