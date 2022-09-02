@@ -5,14 +5,14 @@ import Button from '@/components/Button'
 import { useNavigation } from '@react-navigation/native'
 import { RootNavigation } from '@/navigation/types'
 import useSignInForm from '@/hooks/auth/useSignInForm'
-import { AUTH_STACK, SIGNIN_SCREEN } from '@/navigation/constants'
+import { AUTH_STACK, SIGNUP_SCREEN } from '@/navigation/constants'
 
 export default function Signin() {
   const { isLoading, handleChange, handleSubmit, values } = useSignInForm()
   const { navigate } = useNavigation<RootNavigation>()
   const handleGoToSigninScreen = useCallback(() => {
     navigate(AUTH_STACK, {
-      screen: SIGNIN_SCREEN
+      screen: SIGNUP_SCREEN
     })
   }, [navigate])
 

@@ -11,6 +11,7 @@ import { ThemeManagerProvider } from '@/contexts/theme'
 import { Layout, Toast as ToastContainer } from '@/components'
 import { RootStack } from '@/navigation/RootStack'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { Host } from 'react-native-portalize'
 
 function onAppStateChange(status: AppStateStatus) {
   if (Platform.OS !== 'web') {
@@ -30,12 +31,14 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeManagerProvider>
         <SafeAreaProvider>
-          <NavigationContainer>
-            <Layout type="main">
-              <RootStack />
-            </Layout>
-            <ToastContainer />
-          </NavigationContainer>
+          <Host>
+            <NavigationContainer>
+              <Layout type="main">
+                <RootStack />
+              </Layout>
+              <ToastContainer />
+            </NavigationContainer>
+          </Host>
         </SafeAreaProvider>
       </ThemeManagerProvider>
     </QueryClientProvider>

@@ -17,5 +17,6 @@ export const WALLET_SCREEN = 'Wallet'
 export const SETTINGS_SCREEN = 'Settings'
 
 // Business Stack Screens
-export const CREATE_COMPANY_SCREEN = 'CreateCompany'
 export const BUSINESS_HOME_SCREEN = 'BusinessHome'
+export const CREATE_COMPANY_SCREEN = 'CreateCompany'
+export const EDIT_COMPANY_SCREEN = 'EditCompany'

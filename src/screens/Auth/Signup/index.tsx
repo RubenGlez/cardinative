@@ -9,20 +9,19 @@ import { UserRole } from '@/entities'
 import { AUTH_STACK, SIGNIN_SCREEN } from '@/navigation/constants'
 
 export default function Signup() {
-  const { isLoading, handleChange, handleSubmit, values, setFieldValue } =
-    useSignUpForm()
+  const {
+    isLoading,
+    handleChange,
+    handleSubmit,
+    values,
+    handleChangeUserRole
+  } = useSignUpForm()
   const { navigate } = useNavigation<RootNavigation>()
   const handleGoToSigninScreen = useCallback(() => {
     navigate(AUTH_STACK, {
       screen: SIGNIN_SCREEN
     })
   }, [navigate])
-  const handleChangeUserRole = useCallback(
-    (value: boolean) => {
-      setFieldValue('role', value ? UserRole.Business : UserRole.Basic)
-    },
-    [setFieldValue]
-  )
   const isBusiness = values.role === UserRole.Business
 
   return (

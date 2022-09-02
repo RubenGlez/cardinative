@@ -1,3 +1,4 @@
+import { Company } from '@/entities/Company'
 import { NavigatorScreenParams } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 
@@ -19,6 +20,9 @@ export type MainStackParamsList = {
 export type BusinessStackParamsList = {
   BusinessTabsStack: NavigatorScreenParams<BusinessTabsStackParamsList>
   CreateCompany: undefined
+  EditCompany: {
+    companyIdToEdit: Company['id']
+  }
 }
 
 export type MainTabsStackParamsList = {

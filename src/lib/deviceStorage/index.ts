@@ -1,6 +1,6 @@
 import { MMKVInstance, MMKVLoader } from 'react-native-mmkv-storage'
 
-type DeviceStorageItems = 'userId' | 'accessToken'
+type DeviceStorageItems = 'session'
 
 const deviceStorage: MMKVInstance = new MMKVLoader().initialize()
 
