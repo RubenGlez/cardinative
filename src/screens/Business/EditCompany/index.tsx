@@ -1,10 +1,9 @@
 import React from 'react'
-import { Button, Input, Layout, Spacer, Typography } from '@/components'
+import { Button, Input, Layout, ScreenLayout, Spacer } from '@/components'
 import {
   EditCompanyFormContainer,
   EditCompanyFormContent,
-  EditCompanyFormFooter,
-  EditCompanyFormHeader
+  EditCompanyFormFooter
 } from './styles'
 import useUpdateCompany from '@/hooks/company/useUpdateCompany'
 import { RouteProp, useRoute } from '@react-navigation/native'
@@ -18,11 +17,8 @@ export default function EditCompanyForm() {
     useUpdateCompany(companyIdToEdit)
 
   return (
-    <Layout type="screen">
+    <ScreenLayout title="Edita tu empresa">
       <EditCompanyFormContainer>
-        <EditCompanyFormHeader>
-          <Typography size="xl">Edita tu empresa</Typography>
-        </EditCompanyFormHeader>
         <EditCompanyFormContent>
           <Input
             size="big"
@@ -63,6 +59,6 @@ export default function EditCompanyForm() {
           <Button text="Guardar" onPress={handleSubmit} />
         </EditCompanyFormFooter>
       </EditCompanyFormContainer>
-    </Layout>
+    </ScreenLayout>
   )
 }

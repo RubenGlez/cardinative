@@ -38,6 +38,13 @@ class ApiClient {
       },
       error => Promise.reject(error)
     )
+
+    axios.interceptors.response.use(
+      res => res,
+      err => {
+        console.error(err)
+      }
+    )
   }
 
   public get<T = any, R = AxiosResponse<T>>(

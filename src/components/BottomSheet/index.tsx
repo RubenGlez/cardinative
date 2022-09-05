@@ -20,6 +20,7 @@ const BottomSheet = forwardRef(
         <StyledModalize
           {...modalizeProps}
           ref={forwardedRef}
+          withHandle={false}
           HeaderComponent={
             <BottomSheetHeaderContainer>
               <BottomSheetHeaderShadow />

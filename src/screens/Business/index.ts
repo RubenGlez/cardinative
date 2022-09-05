@@ -1,3 +1,5 @@
+export { default as BusinessCards } from './BusinessCards'
 export { default as BusinessHome } from './BusinessHome'
+export { default as CreateCard } from './CreateCard'
 export { default as CreateCompany } from './CreateCompany'
 export { default as EditCompany } from './EditCompany'

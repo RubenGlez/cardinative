@@ -2,9 +2,6 @@ import { Modalize } from 'react-native-modalize'
 import styled from 'styled-components/native'
 
 export const StyledModalize = styled(Modalize).attrs(({ theme }) => ({
-  handleStyle: {
-    backgroundColor: theme.color.bg_4
-  } as any,
   overlayStyle: {
     backgroundColor: 'rgba(0,0,0,0.75)'
   } as any,

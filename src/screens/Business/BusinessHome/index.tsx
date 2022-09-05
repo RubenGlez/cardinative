@@ -1,11 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import {
-  Button,
-  ScreenLayout,
-  Selector,
-  Spacer,
-  Typography
-} from '@/components'
+import { Button, ScreenLayout, Spacer, Typography } from '@/components'
 import useGetCompanies from '@/hooks/company/useGetCompanies'
 import { useNavigation } from '@react-navigation/native'
 import { RootNavigation } from '@/navigation/types'
@@ -24,7 +18,7 @@ import { Company } from '@/entities/Company'
 
 export default function BusinessHome() {
   const { navigate } = useNavigation<RootNavigation>()
-  const { data: companies, isFetched } = useGetCompanies()
+  const { data: companies = [], isFetched } = useGetCompanies()
   const companiesLength = companies?.length
   const handleGoToEdit = useCallback(
     (id: Company['id']) => () => {
@@ -51,17 +45,15 @@ export default function BusinessHome() {
   }, [companiesLength, handleGoToCreate, isFetched])
 
   return (
-    <ScreenLayout title={'Home'}>
+    <ScreenLayout title={'Home'} showBackButton={false}>
       <Typography size="l">Mis empresas:</Typography>
 
       <CompaniesContainer>
         {companies?.map((company, index) => (
           <CompanyContainer key={index}>
             <CompanyLeftSide>
-              <Typography size="m">Nombre: {company.name}</Typography>
-              <Typography size="m">
-                Descripción: {company.description}
-              </Typography>
+              <Typography size="m">{company.name}</Typography>
+              <Typography size="m">{company.description}</Typography>
             </CompanyLeftSide>
             <CompanyRightSide>
               <Button text={'Editar'} onPress={handleGoToEdit(company.id)} />
@@ -72,17 +64,6 @@ export default function BusinessHome() {
 
       <Spacer vertical="l" />
       <Button text="Crear empresa" onPress={handleGoToCreate} />
-
-      <Selector
-        options={[
-          { value: '1', label: 'empresa 1' },
-          { value: '2', label: 'empresa 2' },
-          { value: '3', label: 'empresa 3' }
-        ]}
-        selected={'2'}
-        placeholder={'selecciona algo'}
-        onSelect={() => {}}
-      />
     </ScreenLayout>
   )
 }

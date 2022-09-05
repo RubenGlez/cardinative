@@ -3,7 +3,11 @@ import { getCompanyRequest } from '@/lib/api/requests/company'
 import { useQuery } from 'react-query'
 
 export default function useGetCompany(companyId: Company['id'] | undefined) {
-  return useQuery(['company', companyId], () => getCompanyRequest(companyId), {
-    enabled: !!companyId
-  })
+  return useQuery(
+    ['companies', companyId],
+    () => getCompanyRequest(companyId),
+    {
+      enabled: !!companyId
+    }
+  )
 }

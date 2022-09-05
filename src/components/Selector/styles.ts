@@ -19,9 +19,15 @@ export const SelectorContainer = styled(Touchable)`
   padding: 0 ${({ theme }) => theme.space.m};
 `
 
-export const OptionContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
+export const OptionContainer = styled(Touchable)`
   height: ${({ theme }) => theme.space.xl};
   padding: 0 ${({ theme }) => theme.space.m};
+`
+export const OptionInner = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  border-bottom-width: 1px;
+  border-color: ${({ theme }) => theme.color.bg_3};
 `

@@ -23,6 +23,7 @@ export type BusinessStackParamsList = {
   EditCompany: {
     companyIdToEdit: Company['id']
   }
+  CreateCard: undefined
 }
 
 export type MainTabsStackParamsList = {
@@ -33,6 +34,7 @@ export type MainTabsStackParamsList = {
 
 export type BusinessTabsStackParamsList = {
   BusinessHome: undefined
+  BusinessCards: undefined
 }
 
 export type RootNavigation = StackNavigationProp<RootStackParamsList>

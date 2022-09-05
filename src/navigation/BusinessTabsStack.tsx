@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { BusinessTabsStackParamsList } from './types'
 import { TabBar } from '@/components'
-import { BUSINESS_HOME_SCREEN } from './constants'
-import { BusinessHome } from '@/screens'
+import { BUSINESS_CARDS_SCREEN, BUSINESS_HOME_SCREEN } from './constants'
+import { BusinessCards, BusinessHome } from '@/screens'
 
 const { Navigator, Screen } =
   createBottomTabNavigator<BusinessTabsStackParamsList>()
@@ -19,6 +19,11 @@ export function BusinessTabsStack() {
         name={BUSINESS_HOME_SCREEN}
         component={BusinessHome}
         options={{ title: 'Home' }}
+      />
+      <Screen
+        name={BUSINESS_CARDS_SCREEN}
+        component={BusinessCards}
+        options={{ title: 'Cards' }}
       />
     </Navigator>
   )

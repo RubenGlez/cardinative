@@ -1,10 +1,9 @@
 import React from 'react'
-import { Button, Input, Layout, Spacer, Typography } from '@/components'
+import { Button, Input, ScreenLayout, Spacer } from '@/components'
 import {
   CreateCompanyFormContainer,
   CreateCompanyFormContent,
-  CreateCompanyFormFooter,
-  CreateCompanyFormHeader
+  CreateCompanyFormFooter
 } from './styles'
 import useCreateCompanyForm from '@/hooks/company/useCreateCompany'
 
@@ -12,11 +11,8 @@ export default function CreateCompanyForm() {
   const { handleSubmit, handleChange, values } = useCreateCompanyForm()
 
   return (
-    <Layout type="screen">
+    <ScreenLayout title="Crea tu empresa">
       <CreateCompanyFormContainer>
-        <CreateCompanyFormHeader>
-          <Typography size="xl">Crea tu empresa</Typography>
-        </CreateCompanyFormHeader>
         <CreateCompanyFormContent>
           <Input
             size="big"
@@ -57,6 +53,6 @@ export default function CreateCompanyForm() {
           <Button text="Crear" onPress={handleSubmit} />
         </CreateCompanyFormFooter>
       </CreateCompanyFormContainer>
-    </Layout>
+    </ScreenLayout>
   )
 }
