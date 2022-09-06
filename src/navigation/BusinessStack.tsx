@@ -5,9 +5,10 @@ import {
   BUSINESS_TABS_STACK,
   CREATE_CARD_SCREEN,
   CREATE_COMPANY_SCREEN,
+  EDIT_CARD_SCREEN,
   EDIT_COMPANY_SCREEN
 } from './constants'
-import { CreateCard, CreateCompany, EditCompany } from '@/screens'
+import { CreateCard, CreateCompany, EditCard, EditCompany } from '@/screens'
 import { BusinessTabsStack } from './BusinessTabsStack'
 
 const { Navigator, Screen } = createStackNavigator<BusinessStackParamsList>()
@@ -23,6 +24,7 @@ export function BusinessStack() {
       <Screen name={EDIT_COMPANY_SCREEN} component={EditCompany} />
 
       <Screen name={CREATE_CARD_SCREEN} component={CreateCard} />
+      <Screen name={EDIT_CARD_SCREEN} component={EditCard} />
     </Navigator>
   )
 }

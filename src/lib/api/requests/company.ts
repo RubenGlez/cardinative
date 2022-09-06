@@ -16,6 +16,7 @@ export function createCompanyRequest(inputData: CreateCompanyInputData) {
     inputData
   )
 }
+
 export function updateCompanyRequest(inputData: UpdateCompanyInputData) {
   return apiClient.put<UpdateCompanyInputData, Company>(
     `/companies/${inputData.id}`,
@@ -31,4 +32,8 @@ export async function getCompaniesRequest() {
 export async function getCompanyRequest(companyId: Company['id']) {
   const { data } = await apiClient.get<Company>(`/companies/${companyId}`)
   return data
+}
+
+export function deleteCompanyRequest(companyId: Company['id']) {
+  return apiClient.delete<Company>(`/companies/${companyId}`)
 }

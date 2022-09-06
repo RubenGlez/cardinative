@@ -12,7 +12,7 @@ import {
   CreateCardFormContent,
   CreateCardFormFooter
 } from './styles'
-import useCreateCardForm from '@/hooks/card/useCreateCard'
+import useCreateCardForm from '@/hooks/card/useCreateCardForm'
 import useGetCompanies from '@/hooks/company/useGetCompanies'
 
 export default function CreateCardForm() {

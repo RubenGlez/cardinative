@@ -5,7 +5,7 @@ import {
   CreateCompanyFormContent,
   CreateCompanyFormFooter
 } from './styles'
-import useCreateCompanyForm from '@/hooks/company/useCreateCompany'
+import useCreateCompanyForm from '@/hooks/company/useCreateCompanyForm'
 
 export default function CreateCompanyForm() {
   const { handleSubmit, handleChange, values } = useCreateCompanyForm()

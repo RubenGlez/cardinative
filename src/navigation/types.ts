@@ -1,3 +1,4 @@
+import { Card } from '@/entities'
 import { Company } from '@/entities/Company'
 import { NavigatorScreenParams } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -24,6 +25,9 @@ export type BusinessStackParamsList = {
     companyIdToEdit: Company['id']
   }
   CreateCard: undefined
+  EditCard: {
+    cardIdToEdit: Card['id']
+  }
 }
 
 export type MainTabsStackParamsList = {

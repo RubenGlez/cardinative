@@ -1,31 +1,32 @@
-import { Card } from '@/entities'
-import { CreateCardInputData, createCardRequest } from '@/lib/api/requests/card'
+import { Company } from '@/entities'
+import { deleteCompanyRequest } from '@/lib/api/requests/company'
+import { AxiosResponse } from 'axios'
 import { useMutation, useQueryClient } from 'react-query'
 
-export interface UseCreateCardProps {
+export interface UseDeleteCompanyProps {
   handleSuccess?: (
-    data: Card,
-    variables: CreateCardInputData,
+    data: AxiosResponse<Company, any>,
+    variables: Company['id'],
     context: unknown
   ) => void
   handleError?: (
     error: unknown,
-    variables: CreateCardInputData,
+    variables: Company['id'],
     context: unknown
   ) => void
 }
 
-export default function useCreateCard({
+export default function useDeleteCompany({
   handleSuccess,
   handleError
-}: UseCreateCardProps) {
+}: UseDeleteCompanyProps) {
   const queryClient = useQueryClient()
 
   return useMutation(
-    (inputData: CreateCardInputData) => createCardRequest(inputData),
+    (companyId: Company['id']) => deleteCompanyRequest(companyId),
     {
       onSuccess: (data, variables, context) => {
-        queryClient.invalidateQueries(['cards'])
+        queryClient.invalidateQueries(['companies'])
         handleSuccess?.(data, variables, context)
       },
       onError: (error, variables, context) => {

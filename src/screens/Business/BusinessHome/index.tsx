@@ -15,10 +15,12 @@ import {
   CompanyRightSide
 } from './styles'
 import { Company } from '@/entities/Company'
+import useDeleteCompany from '@/hooks/company/useDeleteCompany'
 
 export default function BusinessHome() {
   const { navigate } = useNavigation<RootNavigation>()
   const { data: companies = [], isFetched } = useGetCompanies()
+  const { mutate } = useDeleteCompany({})
   const companiesLength = companies?.length
   const handleGoToEdit = useCallback(
     (id: Company['id']) => () => {
@@ -31,6 +33,13 @@ export default function BusinessHome() {
       })
     },
     [navigate]
+  )
+  const handleDelete = useCallback(
+    (id: Company['id']) => () => {
+      if (!id) return
+      mutate(id)
+    },
+    [mutate]
   )
   const handleGoToCreate = useCallback(() => {
     navigate(BUSINESS_STACK, {
@@ -57,6 +66,11 @@ export default function BusinessHome() {
             </CompanyLeftSide>
             <CompanyRightSide>
               <Button text={'Editar'} onPress={handleGoToEdit(company.id)} />
+              <Button
+                text={'Borrar'}
+                type="danger"
+                onPress={handleDelete(company.id)}
+              />
             </CompanyRightSide>
           </CompanyContainer>
         ))}

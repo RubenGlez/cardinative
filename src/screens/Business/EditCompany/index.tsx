@@ -1,11 +1,11 @@
 import React from 'react'
-import { Button, Input, Layout, ScreenLayout, Spacer } from '@/components'
+import { Button, Input, ScreenLayout, Spacer } from '@/components'
 import {
   EditCompanyFormContainer,
   EditCompanyFormContent,
   EditCompanyFormFooter
 } from './styles'
-import useUpdateCompany from '@/hooks/company/useUpdateCompany'
+import useUpdateCompanyForm from '@/hooks/company/useUpdateCompanyForm'
 import { RouteProp, useRoute } from '@react-navigation/native'
 import { BusinessStackParamsList } from '@/navigation/types'
 
@@ -14,7 +14,7 @@ export default function EditCompanyForm() {
     params: { companyIdToEdit }
   } = useRoute<RouteProp<BusinessStackParamsList, 'EditCompany'>>()
   const { handleSubmit, handleChange, values } =
-    useUpdateCompany(companyIdToEdit)
+    useUpdateCompanyForm(companyIdToEdit)
 
   return (
     <ScreenLayout title="Edita tu empresa">

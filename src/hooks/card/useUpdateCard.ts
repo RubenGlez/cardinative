@@ -1,28 +1,28 @@
 import { Card } from '@/entities'
-import { CreateCardInputData, createCardRequest } from '@/lib/api/requests/card'
+import { UpdateCardInputData, updateCardRequest } from '@/lib/api/requests/card'
 import { useMutation, useQueryClient } from 'react-query'
 
-export interface UseCreateCardProps {
+export interface UseUpdateCardProps {
   handleSuccess?: (
     data: Card,
-    variables: CreateCardInputData,
+    variables: UpdateCardInputData,
     context: unknown
   ) => void
   handleError?: (
     error: unknown,
-    variables: CreateCardInputData,
+    variables: UpdateCardInputData,
     context: unknown
   ) => void
 }
 
-export default function useCreateCard({
+export default function useUpdateCard({
   handleSuccess,
   handleError
-}: UseCreateCardProps) {
+}: UseUpdateCardProps) {
   const queryClient = useQueryClient()
 
   return useMutation(
-    (inputData: CreateCardInputData) => createCardRequest(inputData),
+    (inputData: UpdateCardInputData) => updateCardRequest(inputData),
     {
       onSuccess: (data, variables, context) => {
         queryClient.invalidateQueries(['cards'])

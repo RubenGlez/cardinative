@@ -3,69 +3,37 @@ import {
   UpdateCompanyInputData,
   updateCompanyRequest
 } from '@/lib/api/requests/company'
-import {
-  BUSINESS_HOME_SCREEN,
-  BUSINESS_STACK,
-  BUSINESS_TABS_STACK
-} from '@/navigation/constants'
-import { RootNavigation } from '@/navigation/types'
-import { useNavigation } from '@react-navigation/native'
-import { useFormik } from 'formik'
 import { useMutation, useQueryClient } from 'react-query'
-import useNotifications from '../useNotifications'
-import useGetCompany from './useGetCompany'
 
-export default function useUpdateCompany(companyId: Company['id'] | undefined) {
-  const { showErrorToast } = useNotifications()
-  const { navigate } = useNavigation<RootNavigation>()
-  const { data: company } = useGetCompany(companyId)
+export interface UseUpdateCompanyProps {
+  handleSuccess?: (
+    data: Company,
+    variables: UpdateCompanyInputData,
+    context: unknown
+  ) => void
+  handleError?: (
+    error: unknown,
+    variables: UpdateCompanyInputData,
+    context: unknown
+  ) => void
+}
 
-  const { handleChange, handleSubmit, values, resetForm } = useFormik({
-    initialValues: {
-      id: company?.id ?? '',
-      name: company?.name ?? '',
-      description: company?.description ?? '',
-      contact: {
-        email: company?.contact?.email ?? '',
-        phone: company?.contact?.phone ?? '',
-        web: company?.contact?.web ?? ''
-      }
-    },
-    onSubmit: formValues => {
-      mutate(formValues)
-    },
-    enableReinitialize: true
-  })
-
+export default function useUpdateCompany({
+  handleSuccess,
+  handleError
+}: UseUpdateCompanyProps) {
   const queryClient = useQueryClient()
 
-  const { isLoading, isError, isSuccess, mutate } = useMutation(
+  return useMutation(
     (inputData: UpdateCompanyInputData) => updateCompanyRequest(inputData),
     {
-      onSuccess: () => {
+      onSuccess: (data, variables, context) => {
         queryClient.invalidateQueries(['companies'])
-        resetForm()
-        navigate(BUSINESS_STACK, {
-          screen: BUSINESS_TABS_STACK,
-          params: {
-            screen: BUSINESS_HOME_SCREEN
-          }
-        })
+        handleSuccess?.(data, variables, context)
       },
-      onError: (error: any) => {
-        showErrorToast({
-          text1: error.message
-        })
+      onError: (error, variables, context) => {
+        handleError?.(error, variables, context)
       }
     }
   )
-
-  return {
-    isLoading,
-    isError,
-    isSuccess,
-    handleChange,
-    handleSubmit,
-    values
-  }
 }

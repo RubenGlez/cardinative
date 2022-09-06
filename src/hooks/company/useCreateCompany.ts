@@ -1,65 +1,39 @@
+import { Company } from '@/entities'
 import {
   CreateCompanyInputData,
   createCompanyRequest
 } from '@/lib/api/requests/company'
-import {
-  BUSINESS_HOME_SCREEN,
-  BUSINESS_STACK,
-  BUSINESS_TABS_STACK
-} from '@/navigation/constants'
-import { RootNavigation } from '@/navigation/types'
-import { useNavigation } from '@react-navigation/native'
-import { useFormik } from 'formik'
 import { useMutation, useQueryClient } from 'react-query'
-import useNotifications from '../useNotifications'
 
-export default function useCreateCompany() {
-  const { showErrorToast } = useNotifications()
-  const { navigate } = useNavigation<RootNavigation>()
+export interface UseCreateCompanyProps {
+  handleSuccess?: (
+    data: Company,
+    variables: CreateCompanyInputData,
+    context: unknown
+  ) => void
+  handleError?: (
+    error: unknown,
+    variables: CreateCompanyInputData,
+    context: unknown
+  ) => void
+}
+
+export default function useCreateCompany({
+  handleSuccess,
+  handleError
+}: UseCreateCompanyProps) {
   const queryClient = useQueryClient()
 
-  const { handleChange, handleSubmit, values, resetForm } = useFormik({
-    initialValues: {
-      name: '',
-      description: '',
-      contact: {
-        email: '',
-        phone: '',
-        web: ''
-      }
-    },
-    onSubmit: formValues => {
-      mutate(formValues)
-    }
-  })
-
-  const { isLoading, isError, isSuccess, mutate } = useMutation(
+  return useMutation(
     (inputData: CreateCompanyInputData) => createCompanyRequest(inputData),
     {
-      onSuccess: () => {
-        resetForm()
-        navigate(BUSINESS_STACK, {
-          screen: BUSINESS_TABS_STACK,
-          params: {
-            screen: BUSINESS_HOME_SCREEN
-          }
-        })
+      onSuccess: (data, variables, context) => {
         queryClient.invalidateQueries(['companies'])
+        handleSuccess?.(data, variables, context)
       },
-      onError: (error: any) => {
-        showErrorToast({
-          text1: error.message
-        })
+      onError: (error, variables, context) => {
+        handleError?.(error, variables, context)
       }
     }
   )
-
-  return {
-    isLoading,
-    isError,
-    isSuccess,
-    handleChange,
-    handleSubmit,
-    values
-  }
 }
