@@ -18,8 +18,12 @@ export const SETTINGS_SCREEN = 'Settings'
 
 // Business Stack Screens
 export const BUSINESS_HOME_SCREEN = 'BusinessHome'
+export const BUSINESS_COMPANIES_SCREEN = 'BusinessCompanies'
 export const BUSINESS_CARDS_SCREEN = 'BusinessCards'
+export const BUSINESS_PROMOTIONS_SCREEN = 'BusinessPromotions'
 export const CREATE_CARD_SCREEN = 'CreateCard'
 export const EDIT_CARD_SCREEN = 'EditCard'
 export const CREATE_COMPANY_SCREEN = 'CreateCompany'
 export const EDIT_COMPANY_SCREEN = 'EditCompany'
+export const CREATE_PROMOTION_SCREEN = 'CreatePromotion'
+export const EDIT_PROMOTION_SCREEN = 'EditPromotion'

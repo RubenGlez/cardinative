@@ -9,7 +9,7 @@ import useUpdateCompanyForm from '@/hooks/company/useUpdateCompanyForm'
 import { RouteProp, useRoute } from '@react-navigation/native'
 import { BusinessStackParamsList } from '@/navigation/types'
 
-export default function EditCompanyForm() {
+export default function EditCompany() {
   const {
     params: { companyIdToEdit }
   } = useRoute<RouteProp<BusinessStackParamsList, 'EditCompany'>>()

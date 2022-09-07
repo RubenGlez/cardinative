@@ -7,7 +7,7 @@ import {
 } from './styles'
 import useCreateCompanyForm from '@/hooks/company/useCreateCompanyForm'
 
-export default function CreateCompanyForm() {
+export default function CreateCompany() {
   const { handleSubmit, handleChange, values } = useCreateCompanyForm()
 
   return (

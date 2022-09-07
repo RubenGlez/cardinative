@@ -17,7 +17,7 @@ import {
 import useDeleteCard from '@/hooks/card/useDeleteCard'
 import { Card } from '@/entities'
 
-export default function BusinessCards() {
+export default function Cards() {
   const { navigate } = useNavigation<RootNavigation>()
   const { data: cards = [], isFetched } = useGetCards()
   const { mutate } = useDeleteCard({})
@@ -52,8 +52,6 @@ export default function BusinessCards() {
 
   return (
     <ScreenLayout title={'Tarjetas'} showBackButton={false}>
-      <Typography size="l">Mis tarjetas:</Typography>
-
       <CardsContainer>
         {cards?.map((card, index) => (
           <CardContainer key={index}>

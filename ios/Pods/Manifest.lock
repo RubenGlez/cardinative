@@ -287,6 +287,8 @@ PODS:
   - React-jsinspector (0.69.0)
   - React-logger (0.69.0):
     - glog
+  - react-native-date-picker (4.2.5):
+    - React-Core
   - react-native-mmkv-storage (0.7.6):
     - MMKV (= 1.2.10)
     - React-Core
@@ -396,8 +398,6 @@ PODS:
   - RNScreens (3.13.1):
     - React-Core
     - React-RCTImage
-  - RNVectorIcons (9.2.0):
-    - React-Core
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -447,6 +447,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-mmkv-storage (from `../node_modules/react-native-mmkv-storage`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
@@ -465,7 +466,6 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -527,6 +527,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-date-picker:
+    :path: "../node_modules/react-native-date-picker"
   react-native-mmkv-storage:
     :path: "../node_modules/react-native-mmkv-storage"
   react-native-netinfo:
@@ -563,8 +565,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
-  RNVectorIcons:
-    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -603,6 +603,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: b2a049b9f156342f6037ccb0c8acf69f923d3089
   React-jsinspector: 6aced68014b275b7abd073c9598b0affd0e1669c
   React-logger: bcf33ce10afa135158c72635e621ddb94126c610
+  react-native-date-picker: 55193347d8d0f40948f441ffd4e5db6f0a8fbe13
   react-native-mmkv-storage: ba38e5e813ea3d5d37af834a9d867b1ce10aa96d
   react-native-netinfo: 129bd99f607a2dc5bb096168f3e5c150fd1f1c95
   react-native-safe-area-context: 6c12e3859b6f27b25de4fee8201cfb858432d8de
@@ -621,7 +622,6 @@ SPEC CHECKSUMS:
   RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
   RNReanimated: 2cf7451318bb9cc430abeec8d67693f9cf4e039c
   RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
-  RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 4935173923cabaa830e195be3e8e4cac045a8f90
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

@@ -1,4 +1,4 @@
-import { Card } from '@/entities'
+import { Card, Promotion } from '@/entities'
 import { Company } from '@/entities/Company'
 import { NavigatorScreenParams } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -28,6 +28,10 @@ export type BusinessStackParamsList = {
   EditCard: {
     cardIdToEdit: Card['id']
   }
+  CreatePromotion: undefined
+  EditPromotion: {
+    promotionIdToEdit: Promotion['id']
+  }
 }
 
 export type MainTabsStackParamsList = {
@@ -39,6 +43,8 @@ export type MainTabsStackParamsList = {
 export type BusinessTabsStackParamsList = {
   BusinessHome: undefined
   BusinessCards: undefined
+  BusinessCompanies: undefined
+  BusinessPromotions: undefined
 }
 
 export type RootNavigation = StackNavigationProp<RootStackParamsList>

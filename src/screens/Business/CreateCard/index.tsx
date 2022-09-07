@@ -15,7 +15,7 @@ import {
 import useCreateCardForm from '@/hooks/card/useCreateCardForm'
 import useGetCompanies from '@/hooks/company/useGetCompanies'
 
-export default function CreateCardForm() {
+export default function CreateCard() {
   const { handleSubmit, handleChange, values } = useCreateCardForm()
   const { data: companies = [], isLoading: isLoadingCompanies } =
     useGetCompanies()

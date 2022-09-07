@@ -17,7 +17,7 @@ import {
 import { Company } from '@/entities/Company'
 import useDeleteCompany from '@/hooks/company/useDeleteCompany'
 
-export default function BusinessHome() {
+export default function Companies() {
   const { navigate } = useNavigation<RootNavigation>()
   const { data: companies = [], isFetched } = useGetCompanies()
   const { mutate } = useDeleteCompany({})
@@ -54,9 +54,7 @@ export default function BusinessHome() {
   }, [companiesLength, handleGoToCreate, isFetched])
 
   return (
-    <ScreenLayout title={'Home'} showBackButton={false}>
-      <Typography size="l">Mis empresas:</Typography>
-
+    <ScreenLayout title={'Companies'} showBackButton={false}>
       <CompaniesContainer>
         {companies?.map((company, index) => (
           <CompanyContainer key={index}>

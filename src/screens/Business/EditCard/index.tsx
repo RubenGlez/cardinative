@@ -9,7 +9,7 @@ import useUpdateCardForm from '@/hooks/card/useUpdateCardForm'
 import { RouteProp, useRoute } from '@react-navigation/native'
 import { BusinessStackParamsList } from '@/navigation/types'
 
-export default function EditCardForm() {
+export default function EditCard() {
   const {
     params: { cardIdToEdit }
   } = useRoute<RouteProp<BusinessStackParamsList, 'EditCard'>>()
