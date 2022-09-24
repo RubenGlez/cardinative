@@ -1,5 +1,5 @@
 export interface DatePickerProps {
   label?: string
-  value: Date
-  onChange: (date: Date) => void
+  value: string
+  onChange: (stringDate: string) => void
 }

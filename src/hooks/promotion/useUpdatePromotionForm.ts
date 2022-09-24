@@ -1,17 +1,17 @@
 import { Promotion, PromotionType } from '@/entities/Promotion'
 import {
-  BUSINESS_CARDS_SCREEN,
+  BUSINESS_PROMOTIONS_SCREEN,
   BUSINESS_STACK,
   BUSINESS_TABS_STACK
 } from '@/navigation/constants'
 import { RootNavigation } from '@/navigation/types'
 import { useNavigation } from '@react-navigation/native'
 import { useFormik } from 'formik'
+import useGetCards from '../card/useGetCards'
+import useGetCompanies from '../company/useGetCompanies'
 import useNotifications from '../useNotifications'
 import useGetPromotion from './useGetPromotion'
 import useUpdatePromotion from './useUpdatePromotion'
-
-const todayDate = new Date()
 
 export default function useUpdatePromotionForm(
   promotionId: Promotion['id'] | undefined
@@ -30,8 +30,8 @@ export default function useUpdatePromotionForm(
       name: promotion?.name ?? '',
       description: promotion?.description ?? '',
       type: promotion?.type ?? PromotionType.Standard,
-      validFrom: promotion?.validFrom ?? todayDate,
-      validTo: promotion?.validTo ?? todayDate
+      validFrom: promotion?.validFrom ?? '',
+      validTo: promotion?.validTo ?? ''
     },
     onSubmit: formValues => {
       mutate(formValues)
@@ -50,7 +50,7 @@ export default function useUpdatePromotionForm(
       navigate(BUSINESS_STACK, {
         screen: BUSINESS_TABS_STACK,
         params: {
-          screen: BUSINESS_CARDS_SCREEN
+          screen: BUSINESS_PROMOTIONS_SCREEN
         }
       })
     },
@@ -61,7 +61,37 @@ export default function useUpdatePromotionForm(
     }
   })
 
-  const isLoading = isLoadingGetPromotion || isLoadingUpdatePromotion
+  const { data: companies = [], isLoading: isLoadingCompanies } =
+    useGetCompanies()
+
+  const { data: cards = [], isLoading: isLoadingCards } = useGetCards()
+
+  const isLoading =
+    isLoadingGetPromotion ||
+    isLoadingUpdatePromotion ||
+    isLoadingCompanies ||
+    isLoadingCards
+
+  const companyOptions = companies?.map(comp => ({
+    label: comp.name,
+    value: comp.id ?? ''
+  }))
+
+  const cardsOptions = cards?.map(card => ({
+    label: card.name,
+    value: card.id ?? ''
+  }))
+
+  const typesOptions = [
+    {
+      label: 'Básica',
+      value: PromotionType.Standard
+    },
+    {
+      label: 'Otra',
+      value: PromotionType.Other
+    }
+  ]
 
   return {
     isLoading,
@@ -69,6 +99,9 @@ export default function useUpdatePromotionForm(
     isSuccess,
     handleChange,
     handleSubmit,
-    values
+    values,
+    companyOptions,
+    cardsOptions,
+    typesOptions
   }
 }

@@ -14,32 +14,32 @@ import {
   CreatePromotionFormFooter
 } from './styles'
 import useCreatePromotionForm from '@/hooks/promotion/useCreatePromotionForm'
-import useGetCompanies from '@/hooks/company/useGetCompanies'
 
 export default function CreatePromotion() {
-  const { handleSubmit, handleChange, values } = useCreatePromotionForm()
-  const { data: companies = [], isLoading: isLoadingPromotions } =
-    useGetCompanies()
-
-  const companyOptions = companies?.map(comp => ({
-    label: comp.name,
-    value: comp.id ?? ''
-  }))
+  const {
+    handleSubmit,
+    handleChange,
+    values,
+    isLoading,
+    companyOptions,
+    cardsOptions,
+    typesOptions
+  } = useCreatePromotionForm()
 
   return (
     <ScreenLayout title="Crea tu promoción">
-      {isLoadingPromotions && <Loading />}
+      {isLoading && <Loading />}
       <CreatePromotionFormContainer>
         <CreatePromotionFormContent>
           <Selector
             options={companyOptions}
             selected={values.company}
-            placeholder={'Select promotion'}
-            onSelect={handleChange('promotion')}
+            placeholder={'Select company'}
+            onSelect={handleChange('company')}
           />
           <Spacer vertical="m" />
           <Selector
-            options={[]}
+            options={cardsOptions}
             selected={values.card}
             placeholder={'Select card'}
             onSelect={handleChange('card')}
@@ -60,7 +60,7 @@ export default function CreatePromotion() {
           />
           <Spacer vertical="m" />
           <Selector
-            options={[]}
+            options={typesOptions}
             selected={values.type}
             placeholder={'Select type'}
             onSelect={handleChange('type')}
@@ -68,8 +68,14 @@ export default function CreatePromotion() {
           <Spacer vertical="m" />
           <DatePicker
             label="Válido desde"
-            value={new Date()}
-            onChange={() => {}}
+            value={values.validFrom}
+            onChange={handleChange('validFrom')}
+          />
+          <Spacer vertical="m" />
+          <DatePicker
+            label="Válido hasta"
+            value={values.validTo}
+            onChange={handleChange('validTo')}
           />
         </CreatePromotionFormContent>
         <CreatePromotionFormFooter>

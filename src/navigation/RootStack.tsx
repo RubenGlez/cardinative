@@ -5,17 +5,30 @@ import { AuthStack } from './AuthStack'
 import { MainStack } from './MainStack'
 import { AUTH_STACK, BUSINESS_STACK, MAIN_STACK } from './constants'
 import { BusinessStack } from './BusinessStack'
+import useIsSignedIn from '@/hooks/auth/useIsSignedIn'
+import useGetCurrentUser from '@/hooks/user/useGetCurrentUser'
+import { UserRole } from '@/entities'
 
 const { Navigator, Screen } = createStackNavigator<RootStackParamsList>()
 
 export function RootStack() {
+  const isSignedIn = useIsSignedIn()
+  const currentUser = useGetCurrentUser()
+  const currentUserRole = currentUser?.role
+
   return (
-    <Navigator
-      initialRouteName={AUTH_STACK}
-      screenOptions={{ headerShown: false }}>
-      <Screen name={AUTH_STACK} component={AuthStack} />
-      <Screen name={MAIN_STACK} component={MainStack} />
-      <Screen name={BUSINESS_STACK} component={BusinessStack} />
+    <Navigator screenOptions={{ headerShown: false }}>
+      {isSignedIn ? (
+        <>
+          {currentUserRole === UserRole.Basic ? (
+            <Screen name={MAIN_STACK} component={MainStack} />
+          ) : (
+            <Screen name={BUSINESS_STACK} component={BusinessStack} />
+          )}
+        </>
+      ) : (
+        <Screen name={AUTH_STACK} component={AuthStack} />
+      )}
     </Navigator>
   )
 }

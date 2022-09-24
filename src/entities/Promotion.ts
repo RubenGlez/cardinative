@@ -15,6 +15,6 @@ export interface Promotion {
   name: string
   description: string
   type: PromotionType
-  validFrom: Date
-  validTo: Date
+  validFrom: string
+  validTo: string
 }

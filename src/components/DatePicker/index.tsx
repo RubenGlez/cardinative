@@ -1,3 +1,4 @@
+import useIntl from '@/hooks/useIntl'
 import React, { useState } from 'react'
 import RNDatePicker from 'react-native-date-picker'
 import Typography from '../Typography'
@@ -10,6 +11,9 @@ export default function DatePicker({
   onChange
 }: DatePickerProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const { formatDate, getStringFromDate } = useIntl()
+  const internalValue = value ? new Date(value) : new Date()
+  const displayDate = value ? formatDate(internalValue) : ''
 
   return (
     <>
@@ -17,7 +21,11 @@ export default function DatePicker({
         onPress={() => {
           setIsOpen(true)
         }}>
-        <Typography numberOfLines={1}>{label}</Typography>
+        {displayDate ? (
+          <Typography>{displayDate}</Typography>
+        ) : (
+          <Typography numberOfLines={1}>{label}</Typography>
+        )}
       </DatePickerContainer>
 
       <RNDatePicker
@@ -27,11 +35,10 @@ export default function DatePicker({
         cancelText="Cancelar"
         modal={true}
         open={isOpen}
-        date={value}
+        date={internalValue}
         onConfirm={date => {
           setIsOpen(false)
-          onChange(date)
-          console.log(date)
+          onChange(getStringFromDate(date))
         }}
         onCancel={() => {
           setIsOpen(false)

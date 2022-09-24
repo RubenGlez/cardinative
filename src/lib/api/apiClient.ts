@@ -1,6 +1,6 @@
 import { AuthSession } from '@/hooks/auth/useAuthSession'
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { getDeviceStorageItem } from '../deviceStorage'
+import { getDeviceStorageItem, setDeviceStorageItem } from '../deviceStorage'
 
 class ApiClient {
   private _instance: AxiosInstance
@@ -39,10 +39,14 @@ class ApiClient {
       error => Promise.reject(error)
     )
 
-    axios.interceptors.response.use(
+    this._instance.interceptors.response.use(
       res => res,
       err => {
-        console.error(err)
+        console.error('apiClient: ', JSON.stringify(err))
+
+        if (err.name === 'TokenExpiredError') {
+          setDeviceStorageItem('session', '')
+        }
       }
     )
   }

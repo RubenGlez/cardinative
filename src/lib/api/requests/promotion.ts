@@ -1,11 +1,21 @@
 import { Promotion } from '@/entities'
 import apiClient from '../apiClient'
 
-export type CreatePromotionInputData = Omit<Promotion, 'id' | 'owner'>
+export type CreatePromotionInputData = Omit<
+  Promotion,
+  'id' | 'owner' | 'validFrom' | 'validTo'
+> & {
+  validFrom: string
+  validTo: string
+}
+
 export type UpdatePromotionInputData = Omit<
   Promotion,
-  'owner' | 'company' | 'card'
->
+  'owner' | 'company' | 'card' | 'validFrom' | 'validTo'
+> & {
+  validFrom: string
+  validTo: string
+}
 
 export function createPromotionRequest(inputData: CreatePromotionInputData) {
   return apiClient.post<CreatePromotionInputData, Promotion>(
