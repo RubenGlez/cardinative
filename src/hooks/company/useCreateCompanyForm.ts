@@ -1,5 +1,5 @@
 import {
-  BUSINESS_HOME_SCREEN,
+  BUSINESS_COMPANIES_SCREEN,
   BUSINESS_STACK,
   BUSINESS_TABS_STACK
 } from '@/navigation/constants'
@@ -34,7 +34,7 @@ export default function useCreateCompanyForm() {
       navigate(BUSINESS_STACK, {
         screen: BUSINESS_TABS_STACK,
         params: {
-          screen: BUSINESS_HOME_SCREEN
+          screen: BUSINESS_COMPANIES_SCREEN
         }
       })
     },
