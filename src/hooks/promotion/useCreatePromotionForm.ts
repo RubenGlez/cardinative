@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useFormik } from 'formik'
 import useGetCards from '../card/useGetCards'
 import useGetCompanies from '../company/useGetCompanies'
-import useNotifications from '../useNotifications'
+import useNotifications from '../components/useNotifications'
 import useCreatePromotion from './useCreatePromotion'
 
 export default function useCreatePromotionForm() {
@@ -23,7 +23,7 @@ export default function useCreatePromotionForm() {
       card: '',
       name: '',
       description: '',
-      type: PromotionType.Standard,
+      type: '' as PromotionType,
       validFrom: '',
       validTo: ''
     },

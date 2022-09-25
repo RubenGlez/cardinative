@@ -6,7 +6,7 @@ import {
 import { RootNavigation } from '@/navigation/types'
 import { useNavigation } from '@react-navigation/native'
 import { useFormik } from 'formik'
-import useNotifications from '../useNotifications'
+import useNotifications from '../components/useNotifications'
 import useCreateCard from './useCreateCard'
 
 export default function useCreateCardForm() {

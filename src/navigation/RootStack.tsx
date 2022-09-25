@@ -8,6 +8,7 @@ import { BusinessStack } from './BusinessStack'
 import useIsSignedIn from '@/hooks/auth/useIsSignedIn'
 import useGetCurrentUser from '@/hooks/user/useGetCurrentUser'
 import { UserRole } from '@/entities'
+import { Loading } from '@/components'
 
 const { Navigator, Screen } = createStackNavigator<RootStackParamsList>()
 
@@ -15,6 +16,8 @@ export function RootStack() {
   const isSignedIn = useIsSignedIn()
   const currentUser = useGetCurrentUser()
   const currentUserRole = currentUser?.role
+
+  if (isSignedIn && !currentUserRole) return <Loading />
 
   return (
     <Navigator screenOptions={{ headerShown: false }}>

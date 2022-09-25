@@ -22,9 +22,11 @@ export default function DatePicker({
           setIsOpen(true)
         }}>
         {displayDate ? (
-          <Typography>{displayDate}</Typography>
+          <Typography size="l">{displayDate}</Typography>
         ) : (
-          <Typography numberOfLines={1}>{label}</Typography>
+          <Typography numberOfLines={1} size="l" color={'inactive'}>
+            {label}
+          </Typography>
         )}
       </DatePickerContainer>
 

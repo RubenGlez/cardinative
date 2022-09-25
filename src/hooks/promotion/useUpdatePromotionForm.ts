@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useFormik } from 'formik'
 import useGetCards from '../card/useGetCards'
 import useGetCompanies from '../company/useGetCompanies'
-import useNotifications from '../useNotifications'
+import useNotifications from '../components/useNotifications'
 import useGetPromotion from './useGetPromotion'
 import useUpdatePromotion from './useUpdatePromotion'
 

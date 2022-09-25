@@ -14,7 +14,7 @@ export const DatePickerContainer = styled(Touchable)`
   justify-content: space-between;
   height: ${({ theme }) => theme.space.xl};
   border-radius: ${({ theme }) => theme.radius.m};
-  border-width: 2px;
-  border-color: ${({ theme }) => theme.color.bg_3};
-  padding: 0 ${({ theme }) => theme.space.m};
+  border-width: ${({ theme }) => theme.space.xs};
+  border-color: ${({ theme }) => theme.color.bg_4};
+  padding: 0 ${({ theme }) => theme.space.sm};
 `

@@ -25,7 +25,9 @@ class ApiClient {
       config => {
         const sessionData = getDeviceStorageItem('session')
         const authSession: AuthSession =
-          typeof sessionData === 'string' ? JSON.parse(sessionData) : {}
+          !!sessionData && typeof sessionData === 'string'
+            ? JSON.parse(sessionData)
+            : {}
         const { accessToken } = authSession
         try {
           if (!!config.headers && !!accessToken) {

@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { BusinessTabsStackParamsList } from './types'
 import { TabBar } from '@/components'
+import { BusinessHeader } from '@/containers'
 import {
   BUSINESS_CARDS_SCREEN,
   BUSINESS_COMPANIES_SCREEN,
@@ -19,7 +20,9 @@ export function BusinessTabsStack() {
     <Navigator
       initialRouteName={BUSINESS_HOME_SCREEN}
       tabBar={props => <TabBar {...props} />}
-      screenOptions={{ headerShown: false }}>
+      screenOptions={{
+        header: props => <BusinessHeader {...props} />
+      }}>
       <Screen
         name={BUSINESS_HOME_SCREEN}
         component={BusinessHome}

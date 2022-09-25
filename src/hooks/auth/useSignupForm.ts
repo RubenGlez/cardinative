@@ -3,7 +3,7 @@ import { UserRole } from '@/entities'
 import { SignUpInputData, signupRequest } from '@/lib/api/requests/auth'
 import { useFormik } from 'formik'
 import { useMutation } from 'react-query'
-import useNotifications from '../useNotifications'
+import useNotifications from '../components/useNotifications'
 import useAuthSession from './useAuthSession'
 
 export default function useSignUpForm() {

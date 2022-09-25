@@ -1,18 +1,26 @@
 import React from 'react'
 import Typography from '../Typography'
-import { OptionContainer, OptionInner, SelectorContainer } from './styles'
+import {
+  OptionContainer,
+  OptionInner,
+  SelectorContainer,
+  SelectorContainerInner
+} from './styles'
 import { SelectorProps } from './types'
 import { BottomSheet, Icon } from '@/components'
-import useBottomSheet from '@/hooks/useBottomSheet'
+import useBottomSheet from '@/hooks/components/useBottomSheet'
+import { useTheme } from '@/hooks/useTheme'
 
 export default function Selector({
   options = [],
   selected,
   placeholder,
-  onSelect
+  onSelect,
+  customInput
 }: SelectorProps) {
+  const theme = useTheme()
   const { open, ref, close } = useBottomSheet()
-  const itemSelected = options.find(option => option.value === selected)
+  const optSelected = options.find(option => option.value === selected)
   const handleSelect = (value: string) => () => {
     onSelect(value)
     setTimeout(() => {
@@ -24,12 +32,22 @@ export default function Selector({
   return (
     <>
       <SelectorContainer onPress={open as any}>
-        {itemSelected ? (
-          <Typography numberOfLines={1}>{itemSelected.label}</Typography>
+        {customInput ? (
+          customInput({ optSelected })
         ) : (
-          <Typography numberOfLines={1}>{placeholder}</Typography>
+          <SelectorContainerInner>
+            {optSelected ? (
+              <Typography numberOfLines={1} size="l">
+                {optSelected.label}
+              </Typography>
+            ) : (
+              <Typography numberOfLines={1} color={'inactive'} size="l">
+                {placeholder}
+              </Typography>
+            )}
+            <Icon name="chevron-down" color={theme.color.bg_5} />
+          </SelectorContainerInner>
         )}
-        <Icon name="chevron-down" />
       </SelectorContainer>
 
       <BottomSheet
