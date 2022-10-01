@@ -1,23 +1,30 @@
-import { useState } from 'react'
+import useAuthSession from '../auth/useAuthSession'
 import useGetCompanies from '../company/useGetCompanies'
-import useGetCompany from '../company/useGetCompany'
+import useGetPreferences from '../preferences/useGetPreferences'
+import useUpdatePreferences from '../preferences/useUpdatePrefences'
 
 export default function useBusinessHeader() {
-  const [selectedCompanyId, setSelectedCompanyId] = useState('')
+  const [{ userId }] = useAuthSession()
+  const { data: preferences } = useGetPreferences(userId)
+  const { mutate } = useUpdatePreferences({})
   const { data: companies = [], isLoading: isLoadingCompanies } =
     useGetCompanies()
+
   const companyOptions = companies?.map(comp => ({
     label: comp.name,
     value: comp.id ?? ''
   }))
-  const { data: company } = useGetCompany(selectedCompanyId)
-  const handleSelectCompany = (companyId: string) => {
-    setSelectedCompanyId(companyId)
+  const handleSelectCompany = (companySelected: string) => {
+    mutate({
+      ...preferences,
+      user: preferences?.user ?? userId,
+      companySelected
+    })
   }
 
   return {
     companyOptions,
-    companySelected: company?.id ?? '',
+    companySelected: preferences?.companySelected ?? '',
     handleSelectCompany,
     isLoading: isLoadingCompanies
   }

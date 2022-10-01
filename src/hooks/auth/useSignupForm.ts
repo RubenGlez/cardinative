@@ -35,9 +35,8 @@ export default function useSignUpForm() {
       username: '',
       role: UserRole.Basic
     },
-    onSubmit: (formValues, { resetForm }) => {
+    onSubmit: formValues => {
       mutate(formValues)
-      resetForm()
     }
   })
 

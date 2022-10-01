@@ -7,15 +7,17 @@ import { RootNavigation } from '@/navigation/types'
 import { useNavigation } from '@react-navigation/native'
 import { useFormik } from 'formik'
 import useNotifications from '../components/useNotifications'
+import useGetPreferences from '../preferences/useGetPreferences'
 import useCreateCard from './useCreateCard'
 
 export default function useCreateCardForm() {
   const { showErrorToast } = useNotifications()
   const { navigate } = useNavigation<RootNavigation>()
+  const { data: preferences } = useGetPreferences()
 
   const { handleChange, handleSubmit, values, resetForm } = useFormik({
     initialValues: {
-      company: '',
+      company: preferences?.companySelected ?? '',
       name: '',
       color: '',
       logo: '',

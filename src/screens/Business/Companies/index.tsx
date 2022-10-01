@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { Button, ScreenLayout, Spacer, Typography } from '@/components'
+import { Button, Input } from '@/components'
 import useGetCompanies from '@/hooks/company/useGetCompanies'
 import { useNavigation } from '@react-navigation/native'
 import { RootNavigation } from '@/navigation/types'
@@ -10,12 +10,14 @@ import {
 } from '@/navigation/constants'
 import {
   CompaniesContainer,
-  CompanyContainer,
-  CompanyLeftSide,
-  CompanyRightSide
+  CompaniesContent,
+  CompaniesFooter,
+  CompaniesHeader
 } from './styles'
 import { Company } from '@/entities/Company'
 import useDeleteCompany from '@/hooks/company/useDeleteCompany'
+import CompaniesList from './CompaniesList'
+import CompanyDetails from './CompanyDetails'
 
 export default function Companies() {
   const { navigate } = useNavigation<RootNavigation>()
@@ -54,28 +56,17 @@ export default function Companies() {
   }, [companiesLength, handleGoToCreate, isFetched])
 
   return (
-    <ScreenLayout title={'Companies'} showBackButton={false}>
-      <CompaniesContainer>
-        {companies?.map((company, index) => (
-          <CompanyContainer key={index}>
-            <CompanyLeftSide>
-              <Typography size="m">{company.name}</Typography>
-              <Typography size="m">{company.description}</Typography>
-            </CompanyLeftSide>
-            <CompanyRightSide>
-              <Button text={'Editar'} onPress={handleGoToEdit(company.id)} />
-              <Button
-                text={'Borrar'}
-                type="danger"
-                onPress={handleDelete(company.id)}
-              />
-            </CompanyRightSide>
-          </CompanyContainer>
-        ))}
-      </CompaniesContainer>
-
-      <Spacer vertical="l" />
-      <Button text="Crear empresa" onPress={handleGoToCreate} />
-    </ScreenLayout>
+    <CompaniesContainer>
+      <CompaniesHeader>
+        <Input size="small" placeholder="Buscar empresa..." />
+      </CompaniesHeader>
+      <CompaniesContent>
+        <CompaniesList companies={companies} handleShowDetails={() => {}} />
+        <CompanyDetails company={companies[0]} />
+      </CompaniesContent>
+      <CompaniesFooter>
+        <Button text={'+'} onPress={handleGoToCreate} />
+      </CompaniesFooter>
+    </CompaniesContainer>
   )
 }

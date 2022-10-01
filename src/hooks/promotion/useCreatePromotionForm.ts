@@ -10,20 +10,21 @@ import { useFormik } from 'formik'
 import useGetCards from '../card/useGetCards'
 import useGetCompanies from '../company/useGetCompanies'
 import useNotifications from '../components/useNotifications'
+import useGetPreferences from '../preferences/useGetPreferences'
 import useCreatePromotion from './useCreatePromotion'
 
 export default function useCreatePromotionForm() {
   const { showErrorToast } = useNotifications()
   const { navigate } = useNavigation<RootNavigation>()
+  const { data: preferences } = useGetPreferences()
 
   const { handleChange, handleSubmit, values, resetForm } = useFormik({
     initialValues: {
-      owner: '',
-      company: '',
+      company: preferences?.companySelected ?? '',
       card: '',
       name: '',
       description: '',
-      type: '' as PromotionType,
+      type: PromotionType.Standard,
       validFrom: '',
       validTo: ''
     },

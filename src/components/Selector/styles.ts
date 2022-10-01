@@ -10,7 +10,7 @@ const Touchable =
 
 export const SelectorContainer = styled(Touchable)``
 
-export const SelectorContainerInner = styled(Touchable)`
+export const SelectorContainerInner = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;

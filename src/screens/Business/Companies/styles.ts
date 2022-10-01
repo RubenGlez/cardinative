@@ -1,14 +1,20 @@
 import styled from 'styled-components/native'
 
-export const CompaniesContainer = styled.View``
-
-export const CompanyContainer = styled.View`
-  padding: ${({ theme }) => theme.space.l};
-  background-color: ${({ theme }) => theme.color.bg_2};
-  margin: ${({ theme }) => theme.space.s} 0;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+export const CompaniesContainer = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.color.bg_1};
 `
-export const CompanyLeftSide = styled.View``
-export const CompanyRightSide = styled.View``
+export const CompaniesHeader = styled.View`
+  height: ${({ theme }) => theme.space.xxl};
+  padding: 0 ${({ theme }) => theme.space.m};
+  justify-content: center;
+  background-color: ${({ theme }) => theme.color.bg_1};
+`
+export const CompaniesContent = styled.View`
+  flex: 1;
+`
+export const CompaniesFooter = styled.View`
+  position: absolute;
+  right: ${({ theme }) => theme.space.m};
+  bottom: ${({ theme }) => theme.space.m};
+`

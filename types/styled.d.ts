@@ -30,6 +30,7 @@ declare module 'styled-components' {
       ml: string
       l: string
       xl: string
+      xxl: string
     }
     radius: {
       s: string

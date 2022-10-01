@@ -14,7 +14,8 @@ class ApiClient {
         'Access-Control-Allow-Credentials': true,
         'X-Requested-With': 'XMLHttpRequest'
       },
-      withCredentials: true
+      withCredentials: true,
+      validateStatus: () => true
     })
 
     this.setInterceptors()
@@ -42,13 +43,25 @@ class ApiClient {
     )
 
     this._instance.interceptors.response.use(
-      res => res,
-      err => {
-        console.error('apiClient: ', JSON.stringify(err))
+      res => {
+        const isError = !!res.data.error
 
-        if (err.name === 'TokenExpiredError') {
-          setDeviceStorageItem('session', '')
+        if (isError) {
+          const error = res.data.error
+          console.error('🟡 ERROR CONTROLADO', JSON.stringify(error))
+
+          if (error.name === 'TokenExpiredError') {
+            setDeviceStorageItem('session', '')
+          }
+          return res
         }
+
+        console.log('🟢 OK', JSON.stringify(res.data))
+
+        return res
+      },
+      err => {
+        console.error('🔴 ERROR NO CONTROLADO: ', err)
       }
     )
   }

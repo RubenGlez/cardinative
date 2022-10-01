@@ -30,7 +30,8 @@ const lightTheme: DefaultTheme = {
     m: '16px',
     ml: '24px',
     l: '32px',
-    xl: '48px'
+    xl: '48px',
+    xxl: '64px'
   },
   radius: {
     s: '2px',

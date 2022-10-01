@@ -28,10 +28,13 @@ export default function Selector({
       close()
     }, 300)
   }
+  const handleOpen = () => {
+    open()
+  }
 
   return (
     <>
-      <SelectorContainer onPress={open as any}>
+      <SelectorContainer onPress={handleOpen}>
         {customInput ? (
           customInput({ optSelected })
         ) : (
