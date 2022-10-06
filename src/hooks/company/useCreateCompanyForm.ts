@@ -15,12 +15,12 @@ export default function useCreateCompanyForm() {
 
   const { handleChange, handleSubmit, values, resetForm } = useFormik({
     initialValues: {
-      name: '',
-      description: '',
+      name: 'Empresa número 1',
+      description: 'Descripción de la empresa',
       contact: {
-        email: '',
-        phone: '',
-        web: ''
+        email: 'empresaurio@gmail.com',
+        phone: '600 900 888',
+        web: 'empresaurios.com'
       }
     },
     onSubmit: formValues => {

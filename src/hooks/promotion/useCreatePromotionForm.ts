@@ -22,11 +22,11 @@ export default function useCreatePromotionForm() {
     initialValues: {
       company: preferences?.companySelected ?? '',
       card: '',
-      name: '',
-      description: '',
+      name: 'Promoción número 1',
+      description: 'Una promoción increible',
       type: PromotionType.Standard,
-      validFrom: '',
-      validTo: ''
+      validFrom: '2022-10-04T17:03:15.187Z',
+      validTo: '2023-10-04T17:03:15.187Z'
     },
     onSubmit: formValues => {
       mutate(formValues)

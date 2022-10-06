@@ -18,10 +18,10 @@ export default function useCreateCardForm() {
   const { handleChange, handleSubmit, values, resetForm } = useFormik({
     initialValues: {
       company: preferences?.companySelected ?? '',
-      name: '',
-      color: '',
+      name: 'Tarjeta número 1',
+      color: '#ff0000',
       logo: '',
-      description: ''
+      description: 'Una tarjeta de promociones'
     },
     onSubmit: formValues => {
       mutate(formValues)

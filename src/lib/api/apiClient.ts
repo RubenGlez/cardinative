@@ -30,8 +30,10 @@ class ApiClient {
             : {}
         const { accessToken } = authSession
         try {
-          if (!!config.headers && !!accessToken) {
-            config.headers.Authorization = `Bearer ${accessToken}`
+          if (config.headers) {
+            config.headers.Authorization = accessToken
+              ? `Bearer ${accessToken}`
+              : ''
           }
           return config
         } catch (error) {
@@ -47,7 +49,7 @@ class ApiClient {
         const data = err.response.data
         console.error('🔴 API ERROR: ', data)
 
-        if (data.name === 'TokenExpiredError') {
+        if (data.name === 'ExpiredAccessToken') {
           setDeviceStorageItem('session', '')
         }
       }

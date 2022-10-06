@@ -306,6 +306,8 @@ PODS:
     - glog
   - react-native-date-picker (4.2.5):
     - React-Core
+  - react-native-flipper (0.164.0):
+    - React-Core
   - react-native-mmkv-storage (0.7.6):
     - MMKV (= 1.2.10)
     - React-Core
@@ -468,6 +470,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
+  - react-native-flipper (from `../node_modules/react-native-flipper`)
   - react-native-mmkv-storage (from `../node_modules/react-native-mmkv-storage`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
@@ -553,6 +556,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
+  react-native-flipper:
+    :path: "../node_modules/react-native-flipper"
   react-native-mmkv-storage:
     :path: "../node_modules/react-native-mmkv-storage"
   react-native-netinfo:
@@ -630,6 +635,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 6aced68014b275b7abd073c9598b0affd0e1669c
   React-logger: bcf33ce10afa135158c72635e621ddb94126c610
   react-native-date-picker: 55193347d8d0f40948f441ffd4e5db6f0a8fbe13
+  react-native-flipper: c33a4995958ef12a2b2f8290d63bed7adeed7634
   react-native-mmkv-storage: ba38e5e813ea3d5d37af834a9d867b1ce10aa96d
   react-native-netinfo: 129bd99f607a2dc5bb096168f3e5c150fd1f1c95
   react-native-safe-area-context: 6c12e3859b6f27b25de4fee8201cfb858432d8de

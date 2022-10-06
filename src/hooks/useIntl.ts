@@ -2,7 +2,7 @@ const DEFAULT_LOCALE = 'es-ES'
 
 export default function useIntl() {
   const formatDate = (date: Date) => {
-    const formattedDate = new Intl.DateTimeFormat(DEFAULT_LOCALE).format(date)
+    const formattedDate = date.toLocaleDateString(DEFAULT_LOCALE)
     return formattedDate
   }
 

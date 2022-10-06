@@ -9,7 +9,7 @@ import {
 
 export default function CompanyItem({ company, handleShowDetails }) {
   return (
-    <CompanyItemContainer onPress={handleShowDetails}>
+    <CompanyItemContainer onPress={handleShowDetails(company.id)}>
       <CompanyItemInnerContainer>
         <CompanyItemLeftContainer>
           <Typography size="l" color="primary">
@@ -18,11 +18,11 @@ export default function CompanyItem({ company, handleShowDetails }) {
         </CompanyItemLeftContainer>
         <CompanyItemRightContainer>
           <Typography size="m" color="secondary">
-            4 tarjetas
+            {`${company.cards.length} tarjetas`}
           </Typography>
           <Spacer vertical="s" />
           <Typography size="m" color="secondary">
-            28 promos
+            {`${company.promotions.length} promos`}
           </Typography>
         </CompanyItemRightContainer>
       </CompanyItemInnerContainer>
