@@ -6,8 +6,12 @@ import {
   CompanyItemLeftContainer,
   CompanyItemRightContainer
 } from './styles'
+import { CompanyItemProps } from './types'
 
-export default function CompanyItem({ company, handleShowDetails }) {
+export default function CompanyItem({
+  company,
+  handleShowDetails
+}: CompanyItemProps) {
   return (
     <CompanyItemContainer onPress={handleShowDetails(company.id)}>
       <CompanyItemInnerContainer>

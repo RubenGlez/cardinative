@@ -1,3 +1,5 @@
+import { Card } from './Card'
+import { Promotion } from './Promotion'
 import { User } from './User'
 
 export interface Contact {
@@ -14,4 +16,9 @@ export interface Company {
   contact: Contact
   createdAt?: Date
   updatedAt?: Date
+}
+
+export interface CompanyExtended extends Company {
+  cards: Card[]
+  promotions: Promotion[]
 }

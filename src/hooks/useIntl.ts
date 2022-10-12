@@ -5,7 +5,11 @@ export default function useIntl() {
     const formattedDate = date.toLocaleDateString(DEFAULT_LOCALE)
     return formattedDate
   }
-
+  const formatStringDate = (stringDate: string) => {
+    const date = getDateFromString(stringDate)
+    const formattedDate = formatDate(date)
+    return formattedDate
+  }
   const getDateFromString = (stringDate: string) => {
     const date = new Date(stringDate)
     return date
@@ -18,6 +22,7 @@ export default function useIntl() {
   return {
     formatDate,
     getDateFromString,
-    getStringFromDate
+    getStringFromDate,
+    formatStringDate
   }
 }
