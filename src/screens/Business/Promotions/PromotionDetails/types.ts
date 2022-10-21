@@ -5,4 +5,5 @@ export interface PromotionDetailsProps {
   handleCloseDetails: () => void
   handleDelete: (id: Promotion['id']) => void
   handleGoToEdit: (id: Promotion['id']) => void
+  handleGoToRedeem: (id: Promotion['id']) => () => void
 }

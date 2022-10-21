@@ -7,7 +7,7 @@ export default function useGetPromotion(
 ) {
   return useQuery(
     ['promotions', promotionId],
-    () => getPromotionRequest(promotionId),
+    () => getPromotionRequest(promotionId ?? ''),
     {
       enabled: !!promotionId
     }

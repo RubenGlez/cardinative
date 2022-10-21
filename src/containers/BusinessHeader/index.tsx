@@ -2,15 +2,16 @@ import { CompanySelector, Loading } from '@/components'
 import useBusinessHeader from '@/hooks/components/useBusinessHeader'
 import React from 'react'
 import { HeaderContainer } from './styles'
-// import { HeaderProps } from './types'
+import { HeaderProps } from './types'
 
-export default function BusinessHeader() {
+export default function BusinessHeader(_props: HeaderProps) {
   const { companyOptions, companySelected, handleSelectCompany, isLoading } =
     useBusinessHeader()
 
   return (
     <HeaderContainer>
       {isLoading && <Loading />}
+
       <CompanySelector
         options={companyOptions}
         selected={companySelected}

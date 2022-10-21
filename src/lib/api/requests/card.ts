@@ -9,22 +9,22 @@ export function createCardRequest(inputData: CreateCardInputData) {
 }
 
 export async function getCardsRequest() {
-  const { data } = await apiClient.get<Card[]>('/cards')
+  const { data } = await apiClient.get<Card[]>('/business/cards')
   return data
 }
 
 export function updateCardRequest(inputData: UpdateCardInputData) {
   return apiClient.put<UpdateCardInputData, Card>(
-    `/cards/${inputData.id}`,
+    `/business/cards/${inputData.id}`,
     inputData
   )
 }
 
 export async function getCardRequest(cardId: Card['id']) {
-  const { data } = await apiClient.get<Card>(`/cards/${cardId}`)
+  const { data } = await apiClient.get<Card>(`/business/cards/${cardId}`)
   return data
 }
 
 export function deleteCardRequest(cardId: Card['id']) {
-  return apiClient.delete<Card>(`/cards/${cardId}`)
+  return apiClient.delete<Card>(`/business/cards/${cardId}`)
 }

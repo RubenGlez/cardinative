@@ -9,7 +9,8 @@ export default function PromotionDetails({
   promotion,
   handleCloseDetails,
   handleDelete,
-  handleGoToEdit
+  handleGoToEdit,
+  handleGoToRedeem
 }: PromotionDetailsProps) {
   const { open, ref, close } = useBottomSheet()
   const { formatStringDate } = useIntl()
@@ -55,6 +56,12 @@ export default function PromotionDetails({
             onPress={_handleDelete}
           />
         </PromotionDetailsFooter>
+
+        <Spacer vertical="l" />
+        <Button
+          text={'Canjear'}
+          onPress={handleGoToRedeem(promotion?.id ?? '')}
+        />
       </PromotionDetailsContainer>
     </BottomSheet>
   )

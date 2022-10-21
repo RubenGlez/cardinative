@@ -19,28 +19,30 @@ export type UpdatePromotionInputData = Omit<
 
 export function createPromotionRequest(inputData: CreatePromotionInputData) {
   return apiClient.post<CreatePromotionInputData, Promotion>(
-    '/promotions',
+    '/business/promotions',
     inputData
   )
 }
 
 export async function getPromotionsRequest() {
-  const { data } = await apiClient.get<Promotion[]>('/promotions')
+  const { data } = await apiClient.get<Promotion[]>('/business/promotions')
   return data
 }
 
 export function updatePromotionRequest(inputData: UpdatePromotionInputData) {
   return apiClient.put<UpdatePromotionInputData, Promotion>(
-    `/promotions/${inputData.id}`,
+    `/business/promotions/${inputData.id}`,
     inputData
   )
 }
 
 export async function getPromotionRequest(promotionId: Promotion['id']) {
-  const { data } = await apiClient.get<Promotion>(`/promotions/${promotionId}`)
+  const { data } = await apiClient.get<Promotion>(
+    `/business/promotions/${promotionId}`
+  )
   return data
 }
 
 export function deletePromotionRequest(promotionId: Promotion['id']) {
-  return apiClient.delete<Promotion>(`/promotions/${promotionId}`)
+  return apiClient.delete<Promotion>(`/business/promotions/${promotionId}`)
 }

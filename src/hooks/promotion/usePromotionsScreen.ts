@@ -5,6 +5,7 @@ import { RootNavigation } from '@/navigation/types'
 import {
   BUSINESS_STACK,
   CREATE_PROMOTION_SCREEN,
+  CREATE_SUBSCRIPTION_SCREEN,
   EDIT_PROMOTION_SCREEN
 } from '@/navigation/constants'
 import { Promotion } from '@/entities/Promotion'
@@ -86,6 +87,18 @@ export default function usePromotionsScreen() {
       screen: CREATE_PROMOTION_SCREEN
     })
   }, [navigate])
+  const handleGoToRedeem = useCallback(
+    (promotionId: Promotion['id']) => () => {
+      handleCloseDetails()
+      navigate(BUSINESS_STACK, {
+        screen: CREATE_SUBSCRIPTION_SCREEN,
+        params: {
+          promotionId
+        }
+      })
+    },
+    [navigate, handleCloseDetails]
+  )
 
   return {
     selectedPromotion,
@@ -98,6 +111,7 @@ export default function usePromotionsScreen() {
     handleGoToCreate,
     cardsFilterOptions,
     cardsFilterValue,
-    handleChangeCardsFilterValue
+    handleChangeCardsFilterValue,
+    handleGoToRedeem
   }
 }

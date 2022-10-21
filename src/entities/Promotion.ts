@@ -8,7 +8,7 @@ export enum PromotionType {
 }
 
 export interface Promotion {
-  id?: string
+  id: string
   owner: User['id']
   company: Company['id']
   card: Card['id']
@@ -17,4 +17,6 @@ export interface Promotion {
   type: PromotionType
   validFrom: string
   validTo: string
+  createdAt?: Date
+  updatedAt?: Date
 }

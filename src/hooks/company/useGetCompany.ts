@@ -5,7 +5,7 @@ import { useQuery } from 'react-query'
 export default function useGetCompany(companyId: Company['id'] | undefined) {
   return useQuery(
     ['companies', companyId],
-    () => getCompanyRequest(companyId),
+    () => getCompanyRequest(companyId ?? ''),
     {
       enabled: !!companyId
     }

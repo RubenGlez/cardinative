@@ -12,28 +12,30 @@ export type UpdateCompanyInputData = Pick<
 
 export function createCompanyRequest(inputData: CreateCompanyInputData) {
   return apiClient.post<CreateCompanyInputData, Company>(
-    '/companies',
+    '/business/companies',
     inputData
   )
 }
 
 export function updateCompanyRequest(inputData: UpdateCompanyInputData) {
   return apiClient.put<UpdateCompanyInputData, Company>(
-    `/companies/${inputData.id}`,
+    `/business/companies/${inputData.id}`,
     inputData
   )
 }
 
 export async function getCompaniesRequest() {
-  const { data } = await apiClient.get<Company[]>('/companies')
+  const { data } = await apiClient.get<Company[]>('/business/companies')
   return data
 }
 
 export async function getCompanyRequest(companyId: Company['id']) {
-  const { data } = await apiClient.get<Company>(`/companies/${companyId}`)
+  const { data } = await apiClient.get<Company>(
+    `/business/companies/${companyId}`
+  )
   return data
 }
 
 export function deleteCompanyRequest(companyId: Company['id']) {
-  return apiClient.delete<Company>(`/companies/${companyId}`)
+  return apiClient.delete<Company>(`/business/companies/${companyId}`)
 }

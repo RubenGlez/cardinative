@@ -1,11 +1,9 @@
-import useAuthSession from '../auth/useAuthSession'
 import useGetCompanies from '../company/useGetCompanies'
 import useGetPreferences from '../preferences/useGetPreferences'
 import useUpdatePreferences from '../preferences/useUpdatePrefences'
 
 export default function useBusinessHeader() {
-  const [{ userId }] = useAuthSession()
-  const { data: preferences } = useGetPreferences(userId)
+  const { data: preferences } = useGetPreferences()
   const { mutate } = useUpdatePreferences({})
   const { data: companies = [], isLoading: isLoadingCompanies } =
     useGetCompanies()
@@ -15,9 +13,9 @@ export default function useBusinessHeader() {
     value: comp.id ?? ''
   }))
   const handleSelectCompany = (companySelected: string) => {
+    if (!preferences?.id) return
     mutate({
       ...preferences,
-      user: preferences?.user ?? userId,
       companySelected
     })
   }

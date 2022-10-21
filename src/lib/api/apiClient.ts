@@ -7,7 +7,7 @@ class ApiClient {
 
   constructor() {
     this._instance = axios.create({
-      baseURL: 'http://localhost:8000/api',
+      baseURL: 'http://localhost:8000/api/v1',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=utf-8',
@@ -47,11 +47,12 @@ class ApiClient {
       res => res,
       err => {
         const data = err.response.data
-        console.error('🔴 API ERROR: ', data)
+        // console.error('🔴 API ERROR: ', data)
 
         if (data.name === 'ExpiredAccessToken') {
           setDeviceStorageItem('session', '')
         }
+        return Promise.reject(data)
       }
     )
   }

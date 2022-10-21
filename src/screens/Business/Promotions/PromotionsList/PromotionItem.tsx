@@ -1,4 +1,5 @@
 import { Typography } from '@/components'
+import useGetSubscriptionsByStatus from '@/hooks/subscription/useGetSubscriptionsByStatus'
 import React from 'react'
 import {
   PromotionItemContainer,
@@ -12,6 +13,9 @@ export default function PromotionItem({
   promotion,
   handleShowDetails
 }: PromotionItemProps) {
+  const { activedSubsCounter, inactivedSubsCounter, completedSubsCounter } =
+    useGetSubscriptionsByStatus(promotion.id)
+
   return (
     <PromotionItemContainer onPress={handleShowDetails(promotion.id)}>
       <PromotionItemInnerContainer>
@@ -22,7 +26,13 @@ export default function PromotionItem({
         </PromotionItemLeftContainer>
         <PromotionItemRightContainer>
           <Typography size="m" color="secondary">
-            {`${10} suscriptores`}
+            {`${completedSubsCounter} compleatadas`}
+          </Typography>
+          <Typography size="m" color="secondary">
+            {`${activedSubsCounter} activas`}
+          </Typography>
+          <Typography size="m" color="secondary">
+            {`${inactivedSubsCounter} inactivas`}
           </Typography>
         </PromotionItemRightContainer>
       </PromotionItemInnerContainer>

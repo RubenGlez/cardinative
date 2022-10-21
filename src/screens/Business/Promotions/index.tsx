@@ -23,7 +23,8 @@ export default function Promotions() {
     handleGoToCreate,
     cardsFilterOptions,
     cardsFilterValue,
-    handleChangeCardsFilterValue
+    handleChangeCardsFilterValue,
+    handleGoToRedeem
   } = usePromotionsScreen()
 
   const customInput = useCallback(() => <Icon name="filter-outline" />, [])
@@ -53,6 +54,7 @@ export default function Promotions() {
           handleCloseDetails={handleCloseDetails}
           handleGoToEdit={handleGoToEdit}
           handleDelete={handleDelete}
+          handleGoToRedeem={handleGoToRedeem}
         />
       </PromotionsContent>
       <PromotionsFooter>

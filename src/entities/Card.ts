@@ -10,6 +10,8 @@ export interface Card {
   color?: string
   logo?: string
   description?: string
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 export interface CardExtended extends Card {

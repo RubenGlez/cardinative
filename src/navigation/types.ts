@@ -32,6 +32,9 @@ export type BusinessStackParamsList = {
   EditPromotion: {
     promotionIdToEdit: Promotion['id']
   }
+  CreateSubscription: {
+    promotionId: Promotion['id']
+  }
 }
 
 export type MainTabsStackParamsList = {

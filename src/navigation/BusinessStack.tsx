@@ -6,6 +6,7 @@ import {
   CREATE_CARD_SCREEN,
   CREATE_COMPANY_SCREEN,
   CREATE_PROMOTION_SCREEN,
+  CREATE_SUBSCRIPTION_SCREEN,
   EDIT_CARD_SCREEN,
   EDIT_COMPANY_SCREEN,
   EDIT_PROMOTION_SCREEN
@@ -14,6 +15,7 @@ import {
   CreateCard,
   CreateCompany,
   CreatePromotion,
+  CreateSubscription,
   EditCard,
   EditCompany,
   EditPromotion
@@ -37,6 +39,11 @@ export function BusinessStack() {
 
       <Screen name={CREATE_PROMOTION_SCREEN} component={CreatePromotion} />
       <Screen name={EDIT_PROMOTION_SCREEN} component={EditPromotion} />
+
+      <Screen
+        name={CREATE_SUBSCRIPTION_SCREEN}
+        component={CreateSubscription}
+      />
     </Navigator>
   )
 }
