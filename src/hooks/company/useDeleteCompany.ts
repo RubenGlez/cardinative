@@ -2,6 +2,7 @@ import { Company } from '@/entities'
 import { deleteCompanyRequest } from '@/lib/api/requests/business/company'
 import { AxiosResponse } from 'axios'
 import { useMutation, useQueryClient } from '@/lib/queryClient'
+import { QueryKeys } from '@/lib/queryClient/types'
 
 export interface UseDeleteCompanyProps {
   handleSuccess?: (
@@ -26,7 +27,7 @@ export default function useDeleteCompany({
     (companyId: Company['id']) => deleteCompanyRequest(companyId),
     {
       onSuccess: (data, variables, context) => {
-        queryClient.invalidateQueries(['companies'])
+        queryClient.invalidateQueries([QueryKeys.Companies])
         handleSuccess?.(data, variables, context)
       },
       onError: (error, variables, context) => {

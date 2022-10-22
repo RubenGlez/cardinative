@@ -1,6 +1,7 @@
 import { getCardsRequest } from '@/lib/api/requests/business/card'
 import { useQuery } from '@/lib/queryClient'
+import { QueryKeys } from '@/lib/queryClient/types'
 
 export default function useGetCards() {
-  return useQuery(['cards'], () => getCardsRequest())
+  return useQuery([QueryKeys.Cards], () => getCardsRequest())
 }

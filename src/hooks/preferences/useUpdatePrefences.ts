@@ -4,6 +4,7 @@ import {
   updatePreferencesRequest
 } from '@/lib/api/requests/business/preferences'
 import { useMutation, useQueryClient } from '@/lib/queryClient'
+import { QueryKeys } from '@/lib/queryClient/types'
 
 export interface UseUpdatePreferencesProps {
   handleSuccess?: (
@@ -29,7 +30,7 @@ export default function useUpdatePreferences({
       updatePreferencesRequest(inputData),
     {
       onSuccess: (data, variables, context) => {
-        queryClient.invalidateQueries(['preferences'])
+        queryClient.invalidateQueries([QueryKeys.Preferences])
         handleSuccess?.(data, variables, context)
       },
       onError: (error, variables, context) => {

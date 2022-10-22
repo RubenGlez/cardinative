@@ -4,6 +4,7 @@ import {
   createCompanyRequest
 } from '@/lib/api/requests/business/company'
 import { useMutation, useQueryClient } from '@/lib/queryClient'
+import { QueryKeys } from '@/lib/queryClient/types'
 
 export interface UseCreateCompanyProps {
   handleSuccess?: (
@@ -28,7 +29,7 @@ export default function useCreateCompany({
     (inputData: CreateCompanyInputData) => createCompanyRequest(inputData),
     {
       onSuccess: (data, variables, context) => {
-        queryClient.invalidateQueries(['companies'])
+        queryClient.invalidateQueries([QueryKeys.Companies])
         handleSuccess?.(data, variables, context)
       },
       onError: (error, variables, context) => {

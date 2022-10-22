@@ -4,6 +4,7 @@ import {
   updateCardRequest
 } from '@/lib/api/requests/business/card'
 import { useMutation, useQueryClient } from '@/lib/queryClient'
+import { QueryKeys } from '@/lib/queryClient/types'
 
 export interface UseUpdateCardProps {
   handleSuccess?: (
@@ -28,7 +29,7 @@ export default function useUpdateCard({
     (inputData: UpdateCardInputData) => updateCardRequest(inputData),
     {
       onSuccess: (data, variables, context) => {
-        queryClient.invalidateQueries(['cards'])
+        queryClient.invalidateQueries([QueryKeys.Cards])
         handleSuccess?.(data, variables, context)
       },
       onError: (error, variables, context) => {

@@ -4,6 +4,7 @@ import {
   updatePromotionRequest
 } from '@/lib/api/requests/business/promotion'
 import { useMutation, useQueryClient } from '@/lib/queryClient'
+import { QueryKeys } from '@/lib/queryClient/types'
 
 export interface UseUpdatePromotionProps {
   handleSuccess?: (
@@ -28,7 +29,7 @@ export default function useUpdatePromotion({
     (inputData: UpdatePromotionInputData) => updatePromotionRequest(inputData),
     {
       onSuccess: (data, variables, context) => {
-        queryClient.invalidateQueries(['promotions'])
+        queryClient.invalidateQueries([QueryKeys.Promotions])
         handleSuccess?.(data, variables, context)
       },
       onError: (error, variables, context) => {

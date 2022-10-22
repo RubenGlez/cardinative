@@ -2,6 +2,7 @@ import { Card } from '@/entities'
 import { deleteCardRequest } from '@/lib/api/requests/business/card'
 import { AxiosResponse } from 'axios'
 import { useMutation, useQueryClient } from '@/lib/queryClient'
+import { QueryKeys } from '@/lib/queryClient/types'
 
 export interface UseDeleteCardProps {
   handleSuccess?: (
@@ -24,7 +25,7 @@ export default function useDeleteCard({
 
   return useMutation((cardId: Card['id']) => deleteCardRequest(cardId), {
     onSuccess: (data, variables, context) => {
-      queryClient.invalidateQueries(['cards'])
+      queryClient.invalidateQueries([QueryKeys.Cards])
       handleSuccess?.(data, variables, context)
     },
     onError: (error, variables, context) => {

@@ -2,6 +2,7 @@ import { Promotion } from '@/entities'
 import { deletePromotionRequest } from '@/lib/api/requests/business/promotion'
 import { AxiosResponse } from 'axios'
 import { useMutation, useQueryClient } from '@/lib/queryClient'
+import { QueryKeys } from '@/lib/queryClient/types'
 
 export interface UseDeletePromotionProps {
   handleSuccess?: (
@@ -26,7 +27,7 @@ export default function useDeletePromotion({
     (promotionId: Promotion['id']) => deletePromotionRequest(promotionId),
     {
       onSuccess: (data, variables, context) => {
-        queryClient.invalidateQueries(['promotions'])
+        queryClient.invalidateQueries([QueryKeys.Promotions])
         handleSuccess?.(data, variables, context)
       },
       onError: (error, variables, context) => {

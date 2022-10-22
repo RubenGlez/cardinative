@@ -4,6 +4,7 @@ import {
   createSubscriptionRequest
 } from '@/lib/api/requests/business/subscription'
 import { useMutation, useQueryClient } from '@/lib/queryClient'
+import { QueryKeys } from '@/lib/queryClient/types'
 
 export interface UseCreateSubscriptionProps {
   handleSuccess?: (
@@ -29,7 +30,7 @@ export default function useCreateSubscription({
       createSubscriptionRequest(inputData),
     {
       onSuccess: (data, variables, context) => {
-        queryClient.invalidateQueries(['subscriptions'])
+        queryClient.invalidateQueries([QueryKeys.Subscriptions])
         handleSuccess?.(data, variables, context)
       },
       onError: (error, variables, context) => {
