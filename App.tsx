@@ -3,7 +3,11 @@ import 'react-native-gesture-handler'
 import React from 'react'
 import { AppStateStatus, Platform } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { QueryClient, QueryClientProvider, focusManager } from 'react-query'
+import {
+  QueryClient,
+  QueryClientProvider,
+  focusManager
+} from '@/lib/queryClient'
 
 import { useAppState } from '@/hooks/useAppState'
 import { useOnlineManager } from '@/hooks/useOnlineManager'
@@ -20,7 +24,22 @@ function onAppStateChange(status: AppStateStatus) {
 }
 
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { retry: 2 } }
+  defaultOptions: {
+    queries: {
+      retry: 2,
+      staleTime: 1000 * 30, // 30 seconds
+      cacheTime: 1000 * 30, // 30 seconds
+      refetchOnMount: 'always',
+      refetchOnWindowFocus: 'always',
+      refetchOnReconnect: 'always',
+      refetchInterval: 1000 * 30, // 30 seconds
+      refetchIntervalInBackground: false,
+      suspense: false
+    },
+    mutations: {
+      retry: 2
+    }
+  }
 })
 
 if (__DEV__) {

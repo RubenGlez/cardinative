@@ -1,5 +1,5 @@
-import { getPromotionsRequest } from '@/lib/api/requests/promotion'
-import { useQuery } from 'react-query'
+import { getPromotionsRequest } from '@/lib/api/requests/business/promotion'
+import { useQuery } from '@/lib/queryClient'
 
 export default function useGetPromotions() {
   return useQuery(['promotions'], () => getPromotionsRequest())

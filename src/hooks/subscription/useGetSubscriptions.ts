@@ -1,6 +1,6 @@
 import { Subscription } from '@/entities'
-import { getSubscriptionsRequest } from '@/lib/api/requests/subscription'
-import { useQuery } from 'react-query'
+import { getSubscriptionsRequest } from '@/lib/api/requests/business/subscription'
+import { useQuery } from '@/lib/queryClient'
 
 export default function useGetSubscriptions(
   promotionId: Subscription['promotion']

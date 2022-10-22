@@ -2,8 +2,8 @@ import { Promotion } from '@/entities'
 import {
   CreatePromotionInputData,
   createPromotionRequest
-} from '@/lib/api/requests/promotion'
-import { useMutation, useQueryClient } from 'react-query'
+} from '@/lib/api/requests/business/promotion'
+import { useMutation, useQueryClient } from '@/lib/queryClient'
 
 export interface UseCreatePromotionProps {
   handleSuccess?: (

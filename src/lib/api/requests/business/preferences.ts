@@ -1,6 +1,6 @@
 import { User } from '@/entities'
 import { Preferences } from '@/entities/Preferences'
-import apiClient from '../apiClient'
+import apiClient from '../../apiClient'
 
 export type UpdatePreferencesInputData = Pick<
   Preferences,

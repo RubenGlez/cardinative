@@ -2,8 +2,8 @@ import { Preferences } from '@/entities/Preferences'
 import {
   UpdatePreferencesInputData,
   updatePreferencesRequest
-} from '@/lib/api/requests/preferences'
-import { useMutation, useQueryClient } from 'react-query'
+} from '@/lib/api/requests/business/preferences'
+import { useMutation, useQueryClient } from '@/lib/queryClient'
 
 export interface UseUpdatePreferencesProps {
   handleSuccess?: (

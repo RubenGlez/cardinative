@@ -1,7 +1,7 @@
 import { Promotion } from '@/entities'
-import { deletePromotionRequest } from '@/lib/api/requests/promotion'
+import { deletePromotionRequest } from '@/lib/api/requests/business/promotion'
 import { AxiosResponse } from 'axios'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQueryClient } from '@/lib/queryClient'
 
 export interface UseDeletePromotionProps {
   handleSuccess?: (

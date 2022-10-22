@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { UserRole } from '@/entities'
 import { SignUpInputData, signupRequest } from '@/lib/api/requests/auth'
 import { useFormik } from 'formik'
-import { useMutation } from 'react-query'
+import { useMutation } from '@/lib/queryClient'
 import useNotifications from '../components/useNotifications'
 import useAuthSession from './useAuthSession'
 

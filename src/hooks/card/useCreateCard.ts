@@ -1,6 +1,9 @@
 import { Card } from '@/entities'
-import { CreateCardInputData, createCardRequest } from '@/lib/api/requests/card'
-import { useMutation, useQueryClient } from 'react-query'
+import {
+  CreateCardInputData,
+  createCardRequest
+} from '@/lib/api/requests/business/card'
+import { useMutation, useQueryClient } from '@/lib/queryClient'
 
 export interface UseCreateCardProps {
   handleSuccess?: (

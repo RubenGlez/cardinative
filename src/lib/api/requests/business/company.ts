@@ -1,5 +1,5 @@
 import { Company } from '@/entities/Company'
-import apiClient from '../apiClient'
+import apiClient from '../../apiClient'
 
 export type CreateCompanyInputData = Pick<
   Company,

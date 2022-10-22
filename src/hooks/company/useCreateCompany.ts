@@ -2,8 +2,8 @@ import { Company } from '@/entities'
 import {
   CreateCompanyInputData,
   createCompanyRequest
-} from '@/lib/api/requests/company'
-import { useMutation, useQueryClient } from 'react-query'
+} from '@/lib/api/requests/business/company'
+import { useMutation, useQueryClient } from '@/lib/queryClient'
 
 export interface UseCreateCompanyProps {
   handleSuccess?: (

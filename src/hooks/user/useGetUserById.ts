@@ -1,6 +1,6 @@
 import { User } from '@/entities'
-import { getUserByIdRequest } from '@/lib/api/requests/user'
-import { useQuery } from 'react-query'
+import { getUserByIdRequest } from '@/lib/api/requests/business/user'
+import { useQuery } from '@/lib/queryClient'
 
 export default function useGetUserById(userId: User['id'] | undefined) {
   return useQuery(['user', userId], () => getUserByIdRequest(userId), {

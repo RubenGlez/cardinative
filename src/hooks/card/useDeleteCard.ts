@@ -1,7 +1,7 @@
 import { Card } from '@/entities'
-import { deleteCardRequest } from '@/lib/api/requests/card'
+import { deleteCardRequest } from '@/lib/api/requests/business/card'
 import { AxiosResponse } from 'axios'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQueryClient } from '@/lib/queryClient'
 
 export interface UseDeleteCardProps {
   handleSuccess?: (

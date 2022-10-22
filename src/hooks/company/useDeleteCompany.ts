@@ -1,7 +1,7 @@
 import { Company } from '@/entities'
-import { deleteCompanyRequest } from '@/lib/api/requests/company'
+import { deleteCompanyRequest } from '@/lib/api/requests/business/company'
 import { AxiosResponse } from 'axios'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQueryClient } from '@/lib/queryClient'
 
 export interface UseDeleteCompanyProps {
   handleSuccess?: (

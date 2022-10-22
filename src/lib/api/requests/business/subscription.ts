@@ -1,5 +1,5 @@
 import { Subscription } from '@/entities/Subscription'
-import apiClient from '../apiClient'
+import apiClient from '../../apiClient'
 
 export type CreateSubscriptionInputData = Pick<
   Subscription,

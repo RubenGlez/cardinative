@@ -2,8 +2,8 @@ import { Subscription } from '@/entities/Subscription'
 import {
   UpdateSubscriptionInputData,
   updateSubscriptionRequest
-} from '@/lib/api/requests/subscription'
-import { useMutation, useQueryClient } from 'react-query'
+} from '@/lib/api/requests/business/subscription'
+import { useMutation, useQueryClient } from '@/lib/queryClient'
 
 export interface UseUpdateSubscriptionProps {
   handleSuccess?: (

@@ -1,11 +1,11 @@
 import { Card } from '@/entities'
-import apiClient from '../apiClient'
+import apiClient from '../../apiClient'
 
 export type CreateCardInputData = Omit<Card, 'id' | 'owner'>
 export type UpdateCardInputData = Omit<Card, 'owner' | 'company'>
 
 export function createCardRequest(inputData: CreateCardInputData) {
-  return apiClient.post<CreateCardInputData, Card>('/cards', inputData)
+  return apiClient.post<CreateCardInputData, Card>('/business/cards', inputData)
 }
 
 export async function getCardsRequest() {

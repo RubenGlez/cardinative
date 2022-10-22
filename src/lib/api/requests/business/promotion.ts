@@ -1,5 +1,5 @@
 import { Promotion } from '@/entities'
-import apiClient from '../apiClient'
+import apiClient from '../../apiClient'
 
 export type CreatePromotionInputData = Omit<
   Promotion,

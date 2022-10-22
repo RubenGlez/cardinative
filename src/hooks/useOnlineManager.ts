@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import NetInfo from '@react-native-community/netinfo'
-import { onlineManager } from 'react-query'
+import { onlineManager } from '@/lib/queryClient'
 import { Platform } from 'react-native'
 
 export function useOnlineManager() {
