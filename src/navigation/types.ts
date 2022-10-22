@@ -5,8 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 
 export type RootStackParamsList = {
   AuthStack: NavigatorScreenParams<AuthStackParamsList>
-  MainStack: NavigatorScreenParams<MainStackParamsList>
-  BusinessStack: NavigatorScreenParams<BusinessStackParamsList>
+  RoleStack: NavigatorScreenParams<RoleStackParamsList>
 }
 
 export type AuthStackParamsList = {
@@ -14,8 +13,13 @@ export type AuthStackParamsList = {
   Signin: undefined
 }
 
-export type MainStackParamsList = {
-  MainTabsStack: NavigatorScreenParams<MainTabsStackParamsList>
+export type RoleStackParamsList = {
+  BasicStack: NavigatorScreenParams<BasicStackParamsList>
+  BusinessStack: NavigatorScreenParams<BusinessStackParamsList>
+}
+
+export type BasicStackParamsList = {
+  BasicTabsStack: NavigatorScreenParams<BasicTabsStackParamsList>
 }
 
 export type BusinessStackParamsList = {
@@ -37,7 +41,7 @@ export type BusinessStackParamsList = {
   }
 }
 
-export type MainTabsStackParamsList = {
+export type BasicTabsStackParamsList = {
   Home: undefined
   Wallet: undefined
   Settings: undefined

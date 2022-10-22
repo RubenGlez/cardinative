@@ -2,7 +2,8 @@ import { Promotion, PromotionType } from '@/entities/Promotion'
 import {
   BUSINESS_PROMOTIONS_SCREEN,
   BUSINESS_STACK,
-  BUSINESS_TABS_STACK
+  BUSINESS_TABS_STACK,
+  ROLE_STACK
 } from '@/navigation/constants'
 import { RootNavigation } from '@/navigation/types'
 import { useNavigation } from '@react-navigation/native'
@@ -47,10 +48,13 @@ export default function useUpdatePromotionForm(
   } = useUpdatePromotion({
     handleSuccess: () => {
       resetForm()
-      navigate(BUSINESS_STACK, {
-        screen: BUSINESS_TABS_STACK,
+      navigate(ROLE_STACK, {
+        screen: BUSINESS_STACK,
         params: {
-          screen: BUSINESS_PROMOTIONS_SCREEN
+          screen: BUSINESS_TABS_STACK,
+          params: {
+            screen: BUSINESS_PROMOTIONS_SCREEN
+          }
         }
       })
     },

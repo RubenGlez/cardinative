@@ -5,7 +5,8 @@ import { RootNavigation } from '@/navigation/types'
 import {
   BUSINESS_STACK,
   CREATE_CARD_SCREEN,
-  EDIT_CARD_SCREEN
+  EDIT_CARD_SCREEN,
+  ROLE_STACK
 } from '@/navigation/constants'
 import { Card, CardExtended } from '@/entities/Card'
 import useDeleteCard from '@/hooks/card/useDeleteCard'
@@ -50,10 +51,13 @@ export default function useCardsScreen() {
   const handleGoToEdit = useCallback(
     (id: Card['id']) => {
       if (!id) return
-      navigate(BUSINESS_STACK, {
-        screen: EDIT_CARD_SCREEN,
+      navigate(ROLE_STACK, {
+        screen: BUSINESS_STACK,
         params: {
-          cardIdToEdit: id
+          screen: EDIT_CARD_SCREEN,
+          params: {
+            cardIdToEdit: id
+          }
         }
       })
     },
@@ -67,8 +71,11 @@ export default function useCardsScreen() {
     [mutate]
   )
   const handleGoToCreate = useCallback(() => {
-    navigate(BUSINESS_STACK, {
-      screen: CREATE_CARD_SCREEN
+    navigate(ROLE_STACK, {
+      screen: BUSINESS_STACK,
+      params: {
+        screen: CREATE_CARD_SCREEN
+      }
     })
   }, [navigate])
 

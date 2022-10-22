@@ -1,15 +1,15 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { MainTabsStackParamsList } from './types'
+import { BasicTabsStackParamsList } from './types'
 import { TabBar } from '@/components'
 import { HOME_SCREEN, SETTINGS_SCREEN, WALLET_SCREEN } from './constants'
 import { Home, Settings, Wallet } from '@/screens'
 
 const { Navigator, Screen } =
-  createBottomTabNavigator<MainTabsStackParamsList>()
+  createBottomTabNavigator<BasicTabsStackParamsList>()
 
-export function MainTabsStack() {
+export function BasicTabsStack() {
   return (
     <Navigator
       initialRouteName={HOME_SCREEN}

@@ -5,7 +5,8 @@ import { RootNavigation } from '@/navigation/types'
 import {
   BUSINESS_STACK,
   CREATE_COMPANY_SCREEN,
-  EDIT_COMPANY_SCREEN
+  EDIT_COMPANY_SCREEN,
+  ROLE_STACK
 } from '@/navigation/constants'
 import { Company, CompanyExtended } from '@/entities/Company'
 import useDeleteCompany from '@/hooks/company/useDeleteCompany'
@@ -46,10 +47,13 @@ export default function useCompaniesScreen() {
   const handleGoToEdit = useCallback(
     (id: Company['id']) => {
       if (!id) return
-      navigate(BUSINESS_STACK, {
-        screen: EDIT_COMPANY_SCREEN,
+      navigate(ROLE_STACK, {
+        screen: BUSINESS_STACK,
         params: {
-          companyIdToEdit: id
+          screen: EDIT_COMPANY_SCREEN,
+          params: {
+            companyIdToEdit: id
+          }
         }
       })
     },
@@ -63,8 +67,11 @@ export default function useCompaniesScreen() {
     [mutate]
   )
   const handleGoToCreate = useCallback(() => {
-    navigate(BUSINESS_STACK, {
-      screen: CREATE_COMPANY_SCREEN
+    navigate(ROLE_STACK, {
+      screen: BUSINESS_STACK,
+      params: {
+        screen: CREATE_COMPANY_SCREEN
+      }
     })
   }, [navigate])
 

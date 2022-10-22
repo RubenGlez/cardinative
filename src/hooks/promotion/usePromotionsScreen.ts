@@ -6,7 +6,8 @@ import {
   BUSINESS_STACK,
   CREATE_PROMOTION_SCREEN,
   CREATE_SUBSCRIPTION_SCREEN,
-  EDIT_PROMOTION_SCREEN
+  EDIT_PROMOTION_SCREEN,
+  ROLE_STACK
 } from '@/navigation/constants'
 import { Promotion } from '@/entities/Promotion'
 import useDeletePromotion from '@/hooks/promotion/useDeletePromotion'
@@ -66,10 +67,13 @@ export default function usePromotionsScreen() {
   const handleGoToEdit = useCallback(
     (id: Promotion['id']) => {
       if (!id) return
-      navigate(BUSINESS_STACK, {
-        screen: EDIT_PROMOTION_SCREEN,
+      navigate(ROLE_STACK, {
+        screen: BUSINESS_STACK,
         params: {
-          promotionIdToEdit: id
+          screen: EDIT_PROMOTION_SCREEN,
+          params: {
+            promotionIdToEdit: id
+          }
         }
       })
     },
@@ -83,17 +87,23 @@ export default function usePromotionsScreen() {
     [mutate]
   )
   const handleGoToCreate = useCallback(() => {
-    navigate(BUSINESS_STACK, {
-      screen: CREATE_PROMOTION_SCREEN
+    navigate(ROLE_STACK, {
+      screen: BUSINESS_STACK,
+      params: {
+        screen: CREATE_PROMOTION_SCREEN
+      }
     })
   }, [navigate])
   const handleGoToRedeem = useCallback(
     (promotionId: Promotion['id']) => () => {
       handleCloseDetails()
-      navigate(BUSINESS_STACK, {
-        screen: CREATE_SUBSCRIPTION_SCREEN,
+      navigate(ROLE_STACK, {
+        screen: BUSINESS_STACK,
         params: {
-          promotionId
+          screen: CREATE_SUBSCRIPTION_SCREEN,
+          params: {
+            promotionId
+          }
         }
       })
     },

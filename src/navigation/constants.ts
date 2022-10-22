@@ -1,10 +1,11 @@
 // Stacks
 export const AUTH_STACK = 'AuthStack'
-export const MAIN_STACK = 'MainStack'
+export const BASIC_STACK = 'BasicStack'
 export const BUSINESS_STACK = 'BusinessStack'
+export const ROLE_STACK = 'RoleStack'
 
 // Tabs
-export const MAIN_TABS_STACK = 'MainTabsStack'
+export const BASIC_TABS_STACK = 'BasicTabsStack'
 export const BUSINESS_TABS_STACK = 'BusinessTabsStack'
 
 // Auth Stack Screens

@@ -1,10 +1,10 @@
 export enum QueryKeys {
-  Auth,
-  Cards,
-  Companies,
-  Preferences,
-  Promotions,
-  Subscriptions,
-  Users,
-  Wallet
+  Auth = 'auth',
+  Cards = 'cards',
+  Companies = 'companies',
+  Preferences = 'preferences',
+  Promotions = 'promotions',
+  Subscriptions = 'subscriptions',
+  Users = 'users',
+  Wallet = 'wallet'
 }
