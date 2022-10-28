@@ -5,7 +5,6 @@ export const HeaderContainer = styled.View`
   padding: 0 ${({ theme }) => theme.space.m};
   flex-direction: row;
   align-items: center;
-  border-bottom-width: 1px;
-  border-color: ${({ theme }) => theme.color.bg_4};
+  justify-content: space-between;
   height: ${({ theme }) => theme.space.xl};
 `

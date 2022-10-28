@@ -4,8 +4,8 @@ import { useNavigation } from '@react-navigation/native'
 import { RootNavigation } from '@/navigation/types'
 import {
   BUSINESS_STACK,
-  CREATE_CARD_SCREEN,
-  EDIT_CARD_SCREEN,
+  BUSINESS_CREATE_CARD_SCREEN,
+  BUSINESS_EDIT_CARD_SCREEN,
   ROLE_STACK
 } from '@/navigation/constants'
 import { Card, CardExtended } from '@/entities/Card'
@@ -54,7 +54,7 @@ export default function useCardsScreen() {
       navigate(ROLE_STACK, {
         screen: BUSINESS_STACK,
         params: {
-          screen: EDIT_CARD_SCREEN,
+          screen: BUSINESS_EDIT_CARD_SCREEN,
           params: {
             cardIdToEdit: id
           }
@@ -74,7 +74,7 @@ export default function useCardsScreen() {
     navigate(ROLE_STACK, {
       screen: BUSINESS_STACK,
       params: {
-        screen: CREATE_CARD_SCREEN
+        screen: BUSINESS_CREATE_CARD_SCREEN
       }
     })
   }, [navigate])

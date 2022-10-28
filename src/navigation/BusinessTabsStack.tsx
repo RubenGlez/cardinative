@@ -5,12 +5,11 @@ import { BusinessTabsStackParamsList } from './types'
 import { TabBar } from '@/components'
 import { BusinessHeader } from '@/containers'
 import {
-  BUSINESS_CARDS_SCREEN,
-  BUSINESS_COMPANIES_SCREEN,
   BUSINESS_HOME_SCREEN,
-  BUSINESS_PROMOTIONS_SCREEN
+  BUSINESS_PROMOTIONS_SCREEN,
+  BUSINESS_CREATE_SUBSCRIPTION_SCREEN
 } from './constants'
-import { Cards, BusinessHome, Companies, Promotions } from '@/screens'
+import { BusinessHome, Promotions, CreateSubscription } from '@/screens'
 
 const { Navigator, Screen } =
   createBottomTabNavigator<BusinessTabsStackParamsList>()
@@ -26,22 +25,17 @@ export function BusinessTabsStack() {
       <Screen
         name={BUSINESS_HOME_SCREEN}
         component={BusinessHome}
-        options={{ title: 'Home' }}
+        options={{ title: 'Inicio' }}
       />
       <Screen
-        name={BUSINESS_COMPANIES_SCREEN}
-        component={Companies}
-        options={{ title: 'Companies' }}
-      />
-      <Screen
-        name={BUSINESS_CARDS_SCREEN}
-        component={Cards}
-        options={{ title: 'Cards' }}
+        name={BUSINESS_CREATE_SUBSCRIPTION_SCREEN}
+        component={CreateSubscription}
+        options={{ title: 'Canjear' }}
       />
       <Screen
         name={BUSINESS_PROMOTIONS_SCREEN}
         component={Promotions}
-        options={{ title: 'Promotions' }}
+        options={{ title: 'Promociones' }}
       />
     </Navigator>
   )

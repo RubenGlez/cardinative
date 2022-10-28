@@ -2,7 +2,6 @@ import { Card } from '@/entities/Card'
 import {
   BUSINESS_CARDS_SCREEN,
   BUSINESS_STACK,
-  BUSINESS_TABS_STACK,
   ROLE_STACK
 } from '@/navigation/constants'
 import { RootNavigation } from '@/navigation/types'
@@ -44,10 +43,7 @@ export default function useUpdateCardForm(cardId: Card['id'] | undefined) {
       navigate(ROLE_STACK, {
         screen: BUSINESS_STACK,
         params: {
-          screen: BUSINESS_TABS_STACK,
-          params: {
-            screen: BUSINESS_CARDS_SCREEN
-          }
+          screen: BUSINESS_CARDS_SCREEN
         }
       })
     },

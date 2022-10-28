@@ -19,7 +19,7 @@ import { BusinessStackParamsList } from '@/navigation/types'
 export default function EditPromotion() {
   const {
     params: { promotionIdToEdit }
-  } = useRoute<RouteProp<BusinessStackParamsList, 'EditPromotion'>>()
+  } = useRoute<RouteProp<BusinessStackParamsList, 'BusinessEditPromotion'>>()
   const {
     handleSubmit,
     handleChange,

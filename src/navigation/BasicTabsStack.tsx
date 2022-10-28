@@ -3,8 +3,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { BasicTabsStackParamsList } from './types'
 import { TabBar } from '@/components'
-import { HOME_SCREEN, SETTINGS_SCREEN, WALLET_SCREEN } from './constants'
 import { Home, Settings, Wallet } from '@/screens'
+import {
+  BASIC_HOME_SCREEN,
+  BASIC_SETTINGS_SCREEN,
+  BASIC_WALLET_SCREEN
+} from './constants'
 
 const { Navigator, Screen } =
   createBottomTabNavigator<BasicTabsStackParamsList>()
@@ -12,17 +16,21 @@ const { Navigator, Screen } =
 export function BasicTabsStack() {
   return (
     <Navigator
-      initialRouteName={HOME_SCREEN}
+      initialRouteName={BASIC_HOME_SCREEN}
       tabBar={props => <TabBar {...props} />}
       screenOptions={{ headerShown: false }}>
-      <Screen name={HOME_SCREEN} component={Home} options={{ title: 'Home' }} />
       <Screen
-        name={WALLET_SCREEN}
+        name={BASIC_HOME_SCREEN}
+        component={Home}
+        options={{ title: 'Home' }}
+      />
+      <Screen
+        name={BASIC_WALLET_SCREEN}
         component={Wallet}
         options={{ title: 'Wallet' }}
       />
       <Screen
-        name={SETTINGS_SCREEN}
+        name={BASIC_SETTINGS_SCREEN}
         component={Settings}
         options={{ title: 'Settings' }}
       />

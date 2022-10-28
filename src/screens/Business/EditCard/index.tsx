@@ -12,7 +12,7 @@ import { BusinessStackParamsList } from '@/navigation/types'
 export default function EditCard() {
   const {
     params: { cardIdToEdit }
-  } = useRoute<RouteProp<BusinessStackParamsList, 'EditCard'>>()
+  } = useRoute<RouteProp<BusinessStackParamsList, 'BusinessEditCard'>>()
   const { handleSubmit, handleChange, values } = useUpdateCardForm(cardIdToEdit)
 
   return (

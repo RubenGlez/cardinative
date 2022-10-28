@@ -1,11 +1,6 @@
 import React from 'react'
-import { Button, Input } from '@/components'
-import {
-  CompaniesContainer,
-  CompaniesContent,
-  CompaniesFooter,
-  CompaniesHeader
-} from './styles'
+import { Button, Input, ScreenLayout } from '@/components'
+import { CompaniesContent, CompaniesFooter, CompaniesHeader } from './styles'
 import CompaniesList from './CompaniesList'
 import CompanyDetails from './CompanyDetails'
 import useCompaniesScreen from '@/hooks/company/useCompaniesScreen'
@@ -23,7 +18,7 @@ export default function Companies() {
   } = useCompaniesScreen()
 
   return (
-    <CompaniesContainer>
+    <ScreenLayout title={'Empresas'}>
       <CompaniesHeader>
         <Input placeholder="Buscar empresa..." onChangeText={search} />
       </CompaniesHeader>
@@ -42,6 +37,6 @@ export default function Companies() {
       <CompaniesFooter>
         <Button text={'+'} onPress={handleGoToCreate} />
       </CompaniesFooter>
-    </CompaniesContainer>
+    </ScreenLayout>
   )
 }

@@ -1,6 +1,6 @@
 import { Typography } from '@/components'
-import useGetSubscriptionsByStatus from '@/hooks/subscription/useGetSubscriptionsByStatus'
-import React from 'react'
+import { SubscriptionStatus } from '@/entities'
+import React, { useMemo } from 'react'
 import {
   PromotionItemContainer,
   PromotionItemInnerContainer,
@@ -13,8 +13,21 @@ export default function PromotionItem({
   promotion,
   handleShowDetails
 }: PromotionItemProps) {
-  const { activedSubsCounter, inactivedSubsCounter, completedSubsCounter } =
-    useGetSubscriptionsByStatus(promotion.id)
+  const subsData = useMemo(() => {
+    let inProgressSubs = 0
+    let completedSubs = 0
+    promotion.subscriptions.forEach(sub => {
+      if (sub.status === SubscriptionStatus.inprogress) {
+        ++inProgressSubs
+      } else {
+        ++completedSubs
+      }
+    })
+    return {
+      inProgressSubs,
+      completedSubs
+    }
+  }, [promotion.subscriptions])
 
   return (
     <PromotionItemContainer onPress={handleShowDetails(promotion.id)}>
@@ -26,13 +39,10 @@ export default function PromotionItem({
         </PromotionItemLeftContainer>
         <PromotionItemRightContainer>
           <Typography size="m" color="secondary">
-            {`${completedSubsCounter} compleatadas`}
+            {`${subsData.completedSubs} compleatadas`}
           </Typography>
           <Typography size="m" color="secondary">
-            {`${activedSubsCounter} activas`}
-          </Typography>
-          <Typography size="m" color="secondary">
-            {`${inactivedSubsCounter} inactivas`}
+            {`${subsData.inProgressSubs} en progreso`}
           </Typography>
         </PromotionItemRightContainer>
       </PromotionItemInnerContainer>

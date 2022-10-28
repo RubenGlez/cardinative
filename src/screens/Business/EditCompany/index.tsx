@@ -12,7 +12,7 @@ import { BusinessStackParamsList } from '@/navigation/types'
 export default function EditCompany() {
   const {
     params: { companyIdToEdit }
-  } = useRoute<RouteProp<BusinessStackParamsList, 'EditCompany'>>()
+  } = useRoute<RouteProp<BusinessStackParamsList, 'BusinessEditCompany'>>()
   const { handleSubmit, handleChange, values } =
     useUpdateCompanyForm(companyIdToEdit)
 

@@ -4,8 +4,8 @@ import { useNavigation } from '@react-navigation/native'
 import { RootNavigation } from '@/navigation/types'
 import {
   BUSINESS_STACK,
-  CREATE_COMPANY_SCREEN,
-  EDIT_COMPANY_SCREEN,
+  BUSINESS_CREATE_COMPANY_SCREEN,
+  BUSINESS_EDIT_COMPANY_SCREEN,
   ROLE_STACK
 } from '@/navigation/constants'
 import { Company, CompanyExtended } from '@/entities/Company'
@@ -50,7 +50,7 @@ export default function useCompaniesScreen() {
       navigate(ROLE_STACK, {
         screen: BUSINESS_STACK,
         params: {
-          screen: EDIT_COMPANY_SCREEN,
+          screen: BUSINESS_EDIT_COMPANY_SCREEN,
           params: {
             companyIdToEdit: id
           }
@@ -70,7 +70,7 @@ export default function useCompaniesScreen() {
     navigate(ROLE_STACK, {
       screen: BUSINESS_STACK,
       params: {
-        screen: CREATE_COMPANY_SCREEN
+        screen: BUSINESS_CREATE_COMPANY_SCREEN
       }
     })
   }, [navigate])

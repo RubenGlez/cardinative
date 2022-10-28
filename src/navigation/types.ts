@@ -2,56 +2,87 @@ import { Card, Promotion } from '@/entities'
 import { Company } from '@/entities/Company'
 import { NavigatorScreenParams } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
+import {
+  AUTH_STACK,
+  BASIC_HOME_SCREEN,
+  BASIC_SETTINGS_SCREEN,
+  BASIC_STACK,
+  BASIC_TABS_STACK,
+  BASIC_WALLET_SCREEN,
+  BUSINESS_CARDS_SCREEN,
+  BUSINESS_COMPANIES_SCREEN,
+  BUSINESS_CREATE_CARD_SCREEN,
+  BUSINESS_CREATE_COMPANY_SCREEN,
+  BUSINESS_CREATE_PROMOTION_SCREEN,
+  BUSINESS_CREATE_SUBSCRIPTION_SCREEN,
+  BUSINESS_EDIT_CARD_SCREEN,
+  BUSINESS_EDIT_COMPANY_SCREEN,
+  BUSINESS_EDIT_PROMOTION_SCREEN,
+  BUSINESS_HOME_SCREEN,
+  BUSINESS_PROMOTIONS_SCREEN,
+  BUSINESS_SETTINGS_SCREEN,
+  BUSINESS_STACK,
+  BUSINESS_TABS_STACK,
+  ROLE_STACK,
+  SIGNIN_SCREEN,
+  SIGNUP_SCREEN
+} from './constants'
 
 export type RootStackParamsList = {
-  AuthStack: NavigatorScreenParams<AuthStackParamsList>
-  RoleStack: NavigatorScreenParams<RoleStackParamsList>
+  [AUTH_STACK]: NavigatorScreenParams<AuthStackParamsList>
+  [ROLE_STACK]: NavigatorScreenParams<RoleStackParamsList>
 }
 
 export type AuthStackParamsList = {
-  Signup: undefined
-  Signin: undefined
+  [SIGNUP_SCREEN]: undefined
+  [SIGNIN_SCREEN]: undefined
 }
 
 export type RoleStackParamsList = {
-  BasicStack: NavigatorScreenParams<BasicStackParamsList>
-  BusinessStack: NavigatorScreenParams<BusinessStackParamsList>
+  [BASIC_STACK]: NavigatorScreenParams<BasicStackParamsList>
+  [BUSINESS_STACK]: NavigatorScreenParams<BusinessStackParamsList>
 }
 
 export type BasicStackParamsList = {
-  BasicTabsStack: NavigatorScreenParams<BasicTabsStackParamsList>
+  [BASIC_TABS_STACK]: NavigatorScreenParams<BasicTabsStackParamsList>
 }
 
 export type BusinessStackParamsList = {
-  BusinessTabsStack: NavigatorScreenParams<BusinessTabsStackParamsList>
-  CreateCompany: undefined
-  EditCompany: {
+  [BUSINESS_TABS_STACK]: NavigatorScreenParams<BusinessTabsStackParamsList>
+
+  [BUSINESS_COMPANIES_SCREEN]: undefined
+  [BUSINESS_CREATE_COMPANY_SCREEN]: undefined
+  [BUSINESS_EDIT_COMPANY_SCREEN]: {
     companyIdToEdit: Company['id']
   }
-  CreateCard: undefined
-  EditCard: {
+
+  [BUSINESS_CARDS_SCREEN]: undefined
+  [BUSINESS_CREATE_CARD_SCREEN]: undefined
+  [BUSINESS_EDIT_CARD_SCREEN]: {
     cardIdToEdit: Card['id']
   }
-  CreatePromotion: undefined
-  EditPromotion: {
+
+  [BUSINESS_PROMOTIONS_SCREEN]: undefined
+  [BUSINESS_CREATE_PROMOTION_SCREEN]: undefined
+  [BUSINESS_EDIT_PROMOTION_SCREEN]: {
     promotionIdToEdit: Promotion['id']
   }
-  CreateSubscription: {
-    promotionId: Promotion['id']
-  }
+
+  [BUSINESS_SETTINGS_SCREEN]: undefined
 }
 
 export type BasicTabsStackParamsList = {
-  Home: undefined
-  Wallet: undefined
-  Settings: undefined
+  [BASIC_HOME_SCREEN]: undefined
+  [BASIC_WALLET_SCREEN]: undefined
+  [BASIC_SETTINGS_SCREEN]: undefined
 }
 
 export type BusinessTabsStackParamsList = {
-  BusinessHome: undefined
-  BusinessCards: undefined
-  BusinessCompanies: undefined
-  BusinessPromotions: undefined
+  [BUSINESS_HOME_SCREEN]: undefined
+  [BUSINESS_CREATE_SUBSCRIPTION_SCREEN]: {
+    promotionId: Promotion['id']
+  }
+  [BUSINESS_PROMOTIONS_SCREEN]: undefined
 }
 
 export type RootNavigation = StackNavigationProp<RootStackParamsList>

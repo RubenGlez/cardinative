@@ -1,11 +1,6 @@
 import React from 'react'
-import { Button, Input } from '@/components'
-import {
-  CardsContainer,
-  CardsContent,
-  CardsFooter,
-  CardsHeader
-} from './styles'
+import { Button, Input, ScreenLayout } from '@/components'
+import { CardsContent, CardsFooter, CardsHeader } from './styles'
 import CardsList from './CardsList'
 import CardDetails from './CardDetails'
 import useCardsScreen from '@/hooks/card/useCardsScreen'
@@ -23,7 +18,7 @@ export default function Cards() {
   } = useCardsScreen()
 
   return (
-    <CardsContainer>
+    <ScreenLayout title={'Tarjetas'}>
       <CardsHeader>
         <Input placeholder="Buscar tarjeta..." onChangeText={search} />
       </CardsHeader>
@@ -42,6 +37,6 @@ export default function Cards() {
       <CardsFooter>
         <Button text={'+'} onPress={handleGoToCreate} />
       </CardsFooter>
-    </CardsContainer>
+    </ScreenLayout>
   )
 }

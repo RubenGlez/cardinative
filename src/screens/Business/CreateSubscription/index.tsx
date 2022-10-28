@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Button, ScreenLayout, Typography } from '@/components'
+import { Button, Typography } from '@/components'
 import useCreateSubscription from '@/hooks/subscription/useCreateSubscription'
 import { RouteProp, useRoute } from '@react-navigation/native'
-import { BusinessStackParamsList } from '@/navigation/types'
+import { BusinessTabsStackParamsList } from '@/navigation/types'
 import useUpdateSubscription from '@/hooks/subscription/useUpdateSubscription'
+import { View } from 'react-native'
 
 enum Progress {
   readingUser = 'readingUser',
@@ -17,7 +18,10 @@ export default function CreateSubscription() {
   const [progress, setProgress] = useState<Progress[]>([])
   const {
     params: { promotionId }
-  } = useRoute<RouteProp<BusinessStackParamsList, 'CreateSubscription'>>()
+  } =
+    useRoute<
+      RouteProp<BusinessTabsStackParamsList, 'BusinessCreateSubscription'>
+    >()
 
   const handleSuccess = () => {
     setProgress(prev => {
@@ -70,7 +74,7 @@ export default function CreateSubscription() {
   }, [])
 
   return (
-    <ScreenLayout title="Crea tu subscripción">
+    <View>
       {progress.includes(Progress.readingUser) && (
         <Typography>Obteniendo usuario</Typography>
       )}
@@ -91,6 +95,6 @@ export default function CreateSubscription() {
       )}
 
       <Button text={'Crear subscripción'} onPress={handleCreateSubscription} />
-    </ScreenLayout>
+    </View>
   )
 }

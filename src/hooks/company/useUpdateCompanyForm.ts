@@ -2,7 +2,6 @@ import { Company } from '@/entities/Company'
 import {
   BUSINESS_COMPANIES_SCREEN,
   BUSINESS_STACK,
-  BUSINESS_TABS_STACK,
   ROLE_STACK
 } from '@/navigation/constants'
 import { RootNavigation } from '@/navigation/types'
@@ -48,10 +47,7 @@ export default function useUpdateCompanyForm(
       navigate(ROLE_STACK, {
         screen: BUSINESS_STACK,
         params: {
-          screen: BUSINESS_TABS_STACK,
-          params: {
-            screen: BUSINESS_COMPANIES_SCREEN
-          }
+          screen: BUSINESS_COMPANIES_SCREEN
         }
       })
     },

@@ -4,10 +4,11 @@ import { useNavigation } from '@react-navigation/native'
 import { RootNavigation } from '@/navigation/types'
 import {
   BUSINESS_STACK,
-  CREATE_PROMOTION_SCREEN,
-  CREATE_SUBSCRIPTION_SCREEN,
-  EDIT_PROMOTION_SCREEN,
-  ROLE_STACK
+  BUSINESS_CREATE_PROMOTION_SCREEN,
+  BUSINESS_CREATE_SUBSCRIPTION_SCREEN,
+  BUSINESS_EDIT_PROMOTION_SCREEN,
+  ROLE_STACK,
+  BUSINESS_TABS_STACK
 } from '@/navigation/constants'
 import { Promotion } from '@/entities/Promotion'
 import useDeletePromotion from '@/hooks/promotion/useDeletePromotion'
@@ -70,7 +71,7 @@ export default function usePromotionsScreen() {
       navigate(ROLE_STACK, {
         screen: BUSINESS_STACK,
         params: {
-          screen: EDIT_PROMOTION_SCREEN,
+          screen: BUSINESS_EDIT_PROMOTION_SCREEN,
           params: {
             promotionIdToEdit: id
           }
@@ -90,7 +91,7 @@ export default function usePromotionsScreen() {
     navigate(ROLE_STACK, {
       screen: BUSINESS_STACK,
       params: {
-        screen: CREATE_PROMOTION_SCREEN
+        screen: BUSINESS_CREATE_PROMOTION_SCREEN
       }
     })
   }, [navigate])
@@ -100,9 +101,12 @@ export default function usePromotionsScreen() {
       navigate(ROLE_STACK, {
         screen: BUSINESS_STACK,
         params: {
-          screen: CREATE_SUBSCRIPTION_SCREEN,
+          screen: BUSINESS_TABS_STACK,
           params: {
-            promotionId
+            screen: BUSINESS_CREATE_SUBSCRIPTION_SCREEN,
+            params: {
+              promotionId
+            }
           }
         }
       })

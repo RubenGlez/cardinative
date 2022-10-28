@@ -5,10 +5,16 @@ export const TabBarContainer = styled.View`
   background-color: ${({ theme }) => theme.color.bg_1};
   align-items: center;
   height: 56px;
-  border-top-width: 1px;
-  border-color: ${({ theme }) => theme.color.bg_4};
 `
+
+// shadow-color: ${({ theme }) => theme.color.bg_4};
+// shadow-offset-width: 0;
+// shadow-offset-height: 2px;
+// shadow-opacity: 0.25;
+// shadow-radius: 4px;
+// elevation: 5;
 
 export const TabBarItem = styled.TouchableOpacity`
   flex: 1;
+  align-items: center;
 `

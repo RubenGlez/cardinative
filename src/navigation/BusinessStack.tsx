@@ -3,22 +3,28 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { BusinessStackParamsList } from './types'
 import {
   BUSINESS_TABS_STACK,
-  CREATE_CARD_SCREEN,
-  CREATE_COMPANY_SCREEN,
-  CREATE_PROMOTION_SCREEN,
-  CREATE_SUBSCRIPTION_SCREEN,
-  EDIT_CARD_SCREEN,
-  EDIT_COMPANY_SCREEN,
-  EDIT_PROMOTION_SCREEN
+  BUSINESS_CREATE_CARD_SCREEN,
+  BUSINESS_CREATE_COMPANY_SCREEN,
+  BUSINESS_CREATE_PROMOTION_SCREEN,
+  BUSINESS_EDIT_CARD_SCREEN,
+  BUSINESS_EDIT_COMPANY_SCREEN,
+  BUSINESS_EDIT_PROMOTION_SCREEN,
+  BUSINESS_COMPANIES_SCREEN,
+  BUSINESS_CARDS_SCREEN,
+  BUSINESS_PROMOTIONS_SCREEN,
+  BUSINESS_SETTINGS_SCREEN
 } from './constants'
 import {
+  BusinessSettings,
+  Cards,
+  Companies,
   CreateCard,
   CreateCompany,
   CreatePromotion,
-  CreateSubscription,
   EditCard,
   EditCompany,
-  EditPromotion
+  EditPromotion,
+  Promotions
 } from '@/screens'
 import { BusinessTabsStack } from './BusinessTabsStack'
 
@@ -31,19 +37,22 @@ export function BusinessStack() {
       screenOptions={{ headerShown: false }}>
       <Screen name={BUSINESS_TABS_STACK} component={BusinessTabsStack} />
 
-      <Screen name={CREATE_COMPANY_SCREEN} component={CreateCompany} />
-      <Screen name={EDIT_COMPANY_SCREEN} component={EditCompany} />
+      <Screen name={BUSINESS_COMPANIES_SCREEN} component={Companies} />
+      <Screen name={BUSINESS_CREATE_COMPANY_SCREEN} component={CreateCompany} />
+      <Screen name={BUSINESS_EDIT_COMPANY_SCREEN} component={EditCompany} />
 
-      <Screen name={CREATE_CARD_SCREEN} component={CreateCard} />
-      <Screen name={EDIT_CARD_SCREEN} component={EditCard} />
+      <Screen name={BUSINESS_CARDS_SCREEN} component={Cards} />
+      <Screen name={BUSINESS_CREATE_CARD_SCREEN} component={CreateCard} />
+      <Screen name={BUSINESS_EDIT_CARD_SCREEN} component={EditCard} />
 
-      <Screen name={CREATE_PROMOTION_SCREEN} component={CreatePromotion} />
-      <Screen name={EDIT_PROMOTION_SCREEN} component={EditPromotion} />
-
+      <Screen name={BUSINESS_PROMOTIONS_SCREEN} component={Promotions} />
       <Screen
-        name={CREATE_SUBSCRIPTION_SCREEN}
-        component={CreateSubscription}
+        name={BUSINESS_CREATE_PROMOTION_SCREEN}
+        component={CreatePromotion}
       />
+      <Screen name={BUSINESS_EDIT_PROMOTION_SCREEN} component={EditPromotion} />
+
+      <Screen name={BUSINESS_SETTINGS_SCREEN} component={BusinessSettings} />
     </Navigator>
   )
 }
