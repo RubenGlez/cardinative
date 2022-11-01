@@ -1,8 +1,10 @@
+import { UserRole } from '@/entities'
 import useDeviceStorage from '../useDeviceStorage'
 
 export interface AuthSession {
   userId: string
   accessToken: string
+  userRole: UserRole
 }
 
 export default function useAuthSession() {

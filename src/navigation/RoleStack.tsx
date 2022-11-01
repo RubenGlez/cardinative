@@ -4,15 +4,15 @@ import { RoleStackParamsList } from './types'
 import { BasicStack } from './BasicStack'
 import { BUSINESS_STACK, BASIC_STACK } from './constants'
 import { BusinessStack } from './BusinessStack'
-import useGetCurrentUser from '@/hooks/user/useGetCurrentUser'
 import { UserRole } from '@/entities'
 import { Loading } from '@/components'
+import useAuthSession from '@/hooks/auth/useAuthSession'
 
 const { Navigator, Screen } = createStackNavigator<RoleStackParamsList>()
 
 export function RoleStack() {
-  const currentUser = useGetCurrentUser()
-  const currentUserRole = currentUser?.role
+  const [authSession] = useAuthSession()
+  const currentUserRole = authSession?.userRole
 
   if (!currentUserRole) return <Loading />
 

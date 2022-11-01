@@ -16,7 +16,8 @@ export default function useSignUpForm() {
       onSuccess: ({ data }: any) => {
         setAuthSession({
           userId: data.userId,
-          accessToken: data.accessToken
+          accessToken: data.accessToken,
+          userRole: data.userRole
         })
       },
       onError: (error: any) => {

@@ -6,8 +6,7 @@ import useAuthSession from './useAuthSession'
 
 export default function useSignInForm() {
   const { showErrorToast } = useNotifications()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [authSession, setAuthSession] = useAuthSession()
+  const [, setAuthSession] = useAuthSession()
 
   const { isLoading, isError, isSuccess, mutate } = useMutation(
     (inputData: SignInInputData) => signinRequest(inputData),
@@ -15,7 +14,8 @@ export default function useSignInForm() {
       onSuccess: ({ data }: any) => {
         setAuthSession({
           userId: data.userId,
-          accessToken: data.accessToken
+          accessToken: data.accessToken,
+          userRole: data.userRole
         })
       },
       onError: (error: any) => {
