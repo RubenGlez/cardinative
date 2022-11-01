@@ -1,13 +1,19 @@
 import { AuthSession } from '@/hooks/auth/useAuthSession'
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import { Platform } from 'react-native'
 import { getDeviceStorageItem, setDeviceStorageItem } from '../deviceStorage'
+
+const baseURL =
+  Platform.OS === 'android'
+    ? 'http://10.0.2.2:8000/api/v1'
+    : 'http://localhost:8000/api/v1'
 
 class ApiClient {
   private _instance: AxiosInstance
 
   constructor() {
     this._instance = axios.create({
-      baseURL: 'http://localhost:8000/api/v1',
+      baseURL: baseURL,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=utf-8',
@@ -46,10 +52,8 @@ class ApiClient {
     this._instance.interceptors.response.use(
       res => res,
       err => {
-        const data = err.response.data
-        // console.error('🔴 API ERROR: ', data)
-
-        if (data.name === 'ExpiredAccessToken') {
+        const data = err.response?.data
+        if (data?.name === 'ExpiredAccessToken') {
           setDeviceStorageItem('session', '')
         }
         return Promise.reject(data)

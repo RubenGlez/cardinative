@@ -1,14 +1,6 @@
-import {
-  Platform,
-  TouchableNativeFeedback,
-  TouchableOpacity
-} from 'react-native'
 import styled from 'styled-components/native'
 
-const Touchable =
-  Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
-
-export const SelectorContainer = styled(Touchable)``
+export const SelectorContainer = styled.TouchableOpacity``
 
 export const SelectorContainerInner = styled.View`
   flex-direction: row;
@@ -21,7 +13,7 @@ export const SelectorContainerInner = styled.View`
   padding: 0 ${({ theme }) => theme.space.sm};
 `
 
-export const OptionContainer = styled(Touchable)`
+export const OptionContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.space.xl};
   padding: 0 ${({ theme }) => theme.space.m};
 `

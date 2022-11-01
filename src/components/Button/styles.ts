@@ -1,15 +1,7 @@
-import {
-  Platform,
-  TouchableNativeFeedback,
-  TouchableOpacity
-} from 'react-native'
 import styled from 'styled-components/native'
 import { StyledButtonProps } from './types'
 
-const Touchable =
-  Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
-
-export const StyledButton = styled(Touchable)<StyledButtonProps>`
+export const StyledButton = styled.TouchableOpacity<StyledButtonProps>`
   height: ${({ theme, size }) => theme.space[size!]};
   background-color: ${({ theme, type }) => {
     if (type === 'primary') {

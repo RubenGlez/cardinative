@@ -8,8 +8,7 @@ import useAuthSession from './useAuthSession'
 
 export default function useSignUpForm() {
   const { showErrorToast } = useNotifications()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [authSession, setAuthSession] = useAuthSession()
+  const [, setAuthSession] = useAuthSession()
 
   const { isLoading, isError, isSuccess, mutate } = useMutation(
     (inputData: SignUpInputData) => signupRequest(inputData),
@@ -30,9 +29,9 @@ export default function useSignUpForm() {
 
   const { handleChange, handleSubmit, values, setFieldValue } = useFormik({
     initialValues: {
-      email: '',
-      password: '',
-      username: '',
+      email: 'business1@gmail.com',
+      password: '1234',
+      username: 'Juan Pérez',
       role: UserRole.Basic
     },
     onSubmit: formValues => {

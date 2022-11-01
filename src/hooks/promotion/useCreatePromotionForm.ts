@@ -26,6 +26,7 @@ export default function useCreatePromotionForm() {
       name: 'Promoción número 1',
       description: 'Una promoción increible',
       type: PromotionType.Standard,
+      subscriptions: [],
       validFrom: '2022-10-04T17:03:15.187Z',
       validTo: '2023-10-04T17:03:15.187Z'
     },

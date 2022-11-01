@@ -1,12 +1,4 @@
-import {
-  Platform,
-  TouchableNativeFeedback,
-  TouchableOpacity
-} from 'react-native'
 import styled from 'styled-components/native'
-
-const Touchable =
-  Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
 
 export const SettingsHeader = styled.View`
   border-bottom-width: 1px;
@@ -16,7 +8,7 @@ export const SettingsHeader = styled.View`
 
 export const SettingsContent = styled.View``
 
-export const SettingsItemContainer = styled(Touchable)`
+export const SettingsItemContainer = styled.TouchableOpacity`
   height: ${({ theme }) => theme.space.xl};
   flex-direction: row;
   align-items: center;

@@ -6,7 +6,7 @@ export const StyledInput = styled.TextInput.attrs<StyledInputProps>(
     placeholderTextColor: theme.color.text_inactive,
     autoCapitalize: 'none',
     autoCompleteType: 'off',
-    autoCorrect: 'off'
+    autoCorrect: false
   })
 )<StyledInputProps>`
   border-width: ${({ theme }) => theme.space.xs};

@@ -1,14 +1,6 @@
-import {
-  Platform,
-  TouchableNativeFeedback,
-  TouchableOpacity
-} from 'react-native'
 import styled from 'styled-components/native'
 
-const Touchable =
-  Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
-
-export const CardItemContainer = styled(Touchable)``
+export const CardItemContainer = styled.TouchableOpacity``
 
 export const CardItemInnerContainer = styled.View`
   height: ${({ theme }) => theme.space.xxl};
