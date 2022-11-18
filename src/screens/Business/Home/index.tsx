@@ -50,7 +50,7 @@ export default function Home() {
                     </MostFollowedCardRightSideTop>
                     <MostFollowedCardRightSideBottom>
                       <Typography size="m" color="primary">
-                        {`${promo.subscriptions.length} subs`}
+                        {`000 subs`}
                       </Typography>
                     </MostFollowedCardRightSideBottom>
                   </MostFollowedCardRightSide>
@@ -87,7 +87,7 @@ export default function Home() {
                     </MostFollowedCardRightSideTop>
                     <MostFollowedCardRightSideBottom>
                       <Typography size="m" color="primary">
-                        {`${promo.subscriptions.length} subs completadas`}
+                        {`000 subs completadas`}
                       </Typography>
                     </MostFollowedCardRightSideBottom>
                   </MostFollowedCardRightSide>

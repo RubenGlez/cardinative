@@ -1,5 +1,4 @@
 import { Typography } from '@/components'
-import { SubscriptionStatus } from '@/entities'
 import React, { useMemo } from 'react'
 import {
   PromotionItemContainer,
@@ -16,18 +15,12 @@ export default function PromotionItem({
   const subsData = useMemo(() => {
     let inProgressSubs = 0
     let completedSubs = 0
-    promotion.subscriptions.forEach(sub => {
-      if (sub.status === SubscriptionStatus.inprogress) {
-        ++inProgressSubs
-      } else {
-        ++completedSubs
-      }
-    })
+    // TODO
     return {
       inProgressSubs,
       completedSubs
     }
-  }, [promotion.subscriptions])
+  }, [])
 
   return (
     <PromotionItemContainer onPress={handleShowDetails(promotion.id)}>

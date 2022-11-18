@@ -1,4 +1,4 @@
-import { Promotion, SubscriptionStatus } from '@/entities'
+import { Promotion } from '@/entities'
 import useGetCurrentCompany from '../company/useGetCurrentCompany'
 import useGetPromotions from '../promotion/useGetPromotions'
 
@@ -27,24 +27,11 @@ export default function useMetrics() {
     { onDate: [], outDate: [] }
   )
 
-  const onDatePromotionsSortedBySubscriptions = splitbyDate.onDate.sort(
-    (a, b) => {
-      const subsA = a.subscriptions.length
-      const subsB = b.subscriptions.length
-      return subsB - subsA
-    }
-  )
+  // TODO
+  const onDatePromotionsSortedBySubscriptions = splitbyDate.onDate
 
-  const onDatePromotionsSortedByCompletedSubscriptions =
-    splitbyDate.onDate.sort((a, b) => {
-      const completedSubsA = a.subscriptions.filter(
-        sub => sub.status === SubscriptionStatus.completed
-      ).length
-      const completedSubsB = b.subscriptions.filter(
-        sub => sub.status === SubscriptionStatus.completed
-      ).length
-      return completedSubsB - completedSubsA
-    })
+  // TODO
+  const onDatePromotionsSortedByCompletedSubscriptions = splitbyDate.onDate
 
   return {
     promotionsOutDate: splitbyDate.outDate,
