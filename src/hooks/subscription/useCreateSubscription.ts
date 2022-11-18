@@ -31,6 +31,7 @@ export default function useCreateSubscription({
     {
       onSuccess: (data, variables, context) => {
         queryClient.invalidateQueries([QueryKeys.Subscriptions])
+        queryClient.invalidateQueries([QueryKeys.Promotions])
         handleSuccess?.(data, variables, context)
       },
       onError: (error, variables, context) => {

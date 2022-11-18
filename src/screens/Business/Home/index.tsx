@@ -4,52 +4,134 @@ import {
   HomeContainer,
   HomeSection,
   HomeSectionContent,
-  HomeSectionHeader
+  HomeSectionHeader,
+  MostFollowedCard,
+  MostFollowedCardLeftSide,
+  MostFollowedCardRightSide,
+  MostFollowedCardRightSideBottom,
+  MostFollowedCardRightSideTop
 } from './styles'
+import { FlatList } from 'react-native'
+import useMetrics from '@/hooks/metrics/useMetrics'
+import { Promotion } from '@/entities'
 
 export default function Home() {
+  const {
+    onDatePromotionsSortedBySubscriptions,
+    promotionsOutDate,
+    onDatePromotionsSortedByCompletedSubscriptions
+  } = useMetrics()
   return (
     <HomeContainer>
       <HomeSection>
         <HomeSectionHeader>
-          <Typography size="l" color="primary">
-            Promociones más seguidas
+          <Typography size="m" color="primary">
+            Promos en curso con mas suscripciones
           </Typography>
         </HomeSectionHeader>
         <HomeSectionContent>
-          <Typography size="m" color="primary">
-            Un listado con las promos activas con mas suscriptores
-          </Typography>
+          <FlatList
+            data={onDatePromotionsSortedBySubscriptions}
+            horizontal={true}
+            renderItem={({ item, index }) => {
+              const promo = item as Promotion
+              return (
+                <MostFollowedCard key={promo.id}>
+                  <MostFollowedCardLeftSide>
+                    <Typography size="xl" color="primary" align="center">
+                      {`#${index + 1}`}
+                    </Typography>
+                  </MostFollowedCardLeftSide>
+                  <MostFollowedCardRightSide>
+                    <MostFollowedCardRightSideTop>
+                      <Typography size="m" color="primary">
+                        {promo.name}
+                      </Typography>
+                    </MostFollowedCardRightSideTop>
+                    <MostFollowedCardRightSideBottom>
+                      <Typography size="m" color="primary">
+                        {`${promo.subscriptions.length} subs`}
+                      </Typography>
+                    </MostFollowedCardRightSideBottom>
+                  </MostFollowedCardRightSide>
+                </MostFollowedCard>
+              )
+            }}
+          />
         </HomeSectionContent>
       </HomeSection>
       <HomeSection>
         <HomeSectionHeader>
-          <Typography size="l" color="primary">
-            Promociones más completadas
+          <Typography size="m" color="primary">
+            Promos en curso con mas suscripciones completadas
           </Typography>
         </HomeSectionHeader>
         <HomeSectionContent>
-          <Typography size="m" color="primary">
-            Un listado con las promos mas completadas por los usuarios
-          </Typography>
+          <FlatList
+            data={onDatePromotionsSortedByCompletedSubscriptions}
+            horizontal={true}
+            renderItem={({ item, index }) => {
+              const promo = item as Promotion
+              return (
+                <MostFollowedCard key={promo.id}>
+                  <MostFollowedCardLeftSide>
+                    <Typography size="xl" color="primary" align="center">
+                      {`#${index + 1}`}
+                    </Typography>
+                  </MostFollowedCardLeftSide>
+                  <MostFollowedCardRightSide>
+                    <MostFollowedCardRightSideTop>
+                      <Typography size="m" color="primary">
+                        {promo.name}
+                      </Typography>
+                    </MostFollowedCardRightSideTop>
+                    <MostFollowedCardRightSideBottom>
+                      <Typography size="m" color="primary">
+                        {`${promo.subscriptions.length} subs completadas`}
+                      </Typography>
+                    </MostFollowedCardRightSideBottom>
+                  </MostFollowedCardRightSide>
+                </MostFollowedCard>
+              )
+            }}
+          />
         </HomeSectionContent>
       </HomeSection>
       <HomeSection>
         <HomeSectionHeader>
-          <Typography size="l" color="primary">
-            Estadísticas
+          <Typography size="m" color="primary">
+            Promos caducadas
           </Typography>
         </HomeSectionHeader>
         <HomeSectionContent>
-          <Typography size="m" color="primary">
-            14 promociones completadas de 230
-          </Typography>
-          <Typography size="m" color="primary">
-            14 activas
-          </Typography>
-          <Typography size="m" color="primary">
-            23 caducadas
-          </Typography>
+          <FlatList
+            data={promotionsOutDate}
+            horizontal={true}
+            renderItem={({ item, index }) => {
+              const promo = item as Promotion
+              return (
+                <MostFollowedCard key={promo.id}>
+                  <MostFollowedCardLeftSide>
+                    <Typography size="xl" color="primary" align="center">
+                      {`#${index + 1}`}
+                    </Typography>
+                  </MostFollowedCardLeftSide>
+                  <MostFollowedCardRightSide>
+                    <MostFollowedCardRightSideTop>
+                      <Typography size="m" color="primary">
+                        {promo.name}
+                      </Typography>
+                    </MostFollowedCardRightSideTop>
+                    <MostFollowedCardRightSideBottom>
+                      <Typography size="m" color="primary">
+                        {`caducada`}
+                      </Typography>
+                    </MostFollowedCardRightSideBottom>
+                  </MostFollowedCardRightSide>
+                </MostFollowedCard>
+              )
+            }}
+          />
         </HomeSectionContent>
       </HomeSection>
     </HomeContainer>

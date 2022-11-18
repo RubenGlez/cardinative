@@ -30,7 +30,7 @@ export default function useSignUpForm() {
 
   const { handleChange, handleSubmit, values, setFieldValue } = useFormik({
     initialValues: {
-      email: 'business1@gmail.com',
+      email: 'business@gmail.com',
       password: '1234',
       username: 'Juan Pérez',
       role: UserRole.Basic

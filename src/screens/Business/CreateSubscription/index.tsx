@@ -63,7 +63,7 @@ export default function CreateSubscription() {
     })
     mutateCreate({
       promotion: promotionId,
-      subscriptor: '62c367ba2ceee4afb12c7983' // ruben@gmail.com
+      subscriptor: '6361436714f451df6db5c321' // basic@gmail.com
     })
   }
 
