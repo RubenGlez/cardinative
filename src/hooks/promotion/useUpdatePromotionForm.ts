@@ -31,7 +31,6 @@ export default function useUpdatePromotionForm(
       name: promotion?.name ?? '',
       description: promotion?.description ?? '',
       type: promotion?.type ?? PromotionType.Standard,
-      subscriptions: promotion?.subscriptions ?? [],
       validFrom: promotion?.validFrom ?? '',
       validTo: promotion?.validTo ?? ''
     },

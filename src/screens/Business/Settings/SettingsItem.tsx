@@ -2,7 +2,17 @@ import React from 'react'
 import { Icon, Spacer, Typography } from '@/components'
 import { SettingsItemContainer, SettingsItemInner } from './styles'
 
-export default function SettingsItem({ onPress, label, icon }) {
+interface SettingsItemProps {
+  onPress: () => void
+  label: string
+  icon: string
+}
+
+export default function SettingsItem({
+  onPress,
+  label,
+  icon
+}: SettingsItemProps) {
   return (
     <SettingsItemContainer onPress={onPress}>
       <SettingsItemInner>
