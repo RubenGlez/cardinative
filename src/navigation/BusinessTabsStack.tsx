@@ -30,7 +30,7 @@ export function BusinessTabsStack() {
       <Screen
         name={BUSINESS_CREATE_SUBSCRIPTION_SCREEN}
         component={CreateSubscription}
-        options={{ title: 'Canjear' }}
+        options={{ title: 'Canjear', unmountOnBlur: true }}
       />
       <Screen
         name={BUSINESS_PROMOTIONS_SCREEN}

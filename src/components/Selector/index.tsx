@@ -56,6 +56,7 @@ export default function Selector({
       <BottomSheet
         ref={ref}
         label={placeholder}
+        modalTopOffset={40}
         flatListProps={{
           data: options,
           keyExtractor: option => option.value,
