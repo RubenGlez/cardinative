@@ -1,19 +1,13 @@
 import { AuthSession } from '@/hooks/auth/useAuthSession'
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { Platform } from 'react-native'
 import { getDeviceStorageItem, setDeviceStorageItem } from '../deviceStorage'
-
-const baseURL =
-  Platform.OS === 'android'
-    ? 'http://10.0.2.2:3000/api/v1'
-    : 'http://localhost:3000/api/v1'
 
 class ApiClient {
   private _instance: AxiosInstance
 
   constructor() {
     this._instance = axios.create({
-      baseURL: baseURL,
+      baseURL: 'http://localhost:3000/api/v1',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=utf-8',
