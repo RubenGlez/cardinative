@@ -31,6 +31,7 @@
     "react-native-screens": "^3.13.1",
     "react-native-toast-message": "^2.1.5",
     "react-native-vector-icons": "^9.2.0",
+    "react-native-vision-camera": "^2.15.2",
     "react-query": "^3.39.1",
     "styled-components": "^5.3.5"
   },

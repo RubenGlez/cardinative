@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Selector, Spacer, Typography } from '@/components'
+import { Button, Camera, Selector, Spacer, Typography } from '@/components'
 import useCreateSubscription from '@/hooks/subscription/useCreateSubscription'
 import { RouteProp, useRoute } from '@react-navigation/native'
 import { BusinessTabsStackParamsList } from '@/navigation/types'
@@ -73,6 +73,7 @@ export default function CreateSubscription() {
 
   return (
     <CreateSubscriptionContainer>
+      <Camera />
       <Typography>{`Promoción: ${promotionId}`}</Typography>
       <Spacer vertical="l" />
       <Selector
