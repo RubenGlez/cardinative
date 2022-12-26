@@ -24,8 +24,10 @@ export function createPromotionRequest(inputData: CreatePromotionInputData) {
   )
 }
 
-export async function getPromotionsRequest() {
-  const { data } = await apiClient.get<Promotion[]>('/business/promotions')
+export async function getPromotionsRequest(companyId: Promotion['company']) {
+  const { data } = await apiClient.get<Promotion[]>(
+    `/business/promotions?companyId=${companyId}`
+  )
   return data
 }
 

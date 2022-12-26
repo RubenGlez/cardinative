@@ -26,10 +26,10 @@ export function updateSubscriptionRequest(
 }
 
 export async function getSubscriptionsRequest(
-  promotionId: Subscription['promotion']
+  companyId: Subscription['company']
 ) {
   const { data } = await apiClient.get<Subscription[]>(
-    `/business/subscriptions/?promotionId=${promotionId}`
+    `/business/subscriptions/?companyId=${companyId}`
   )
   return data
 }

@@ -15,9 +15,9 @@ export default function Button({
     <StyledButton
       size={size}
       type={type}
-      isDisabled={isDisabled}
       isFullWidth={isFullWidth}
-      onPress={onPress}>
+      onPress={onPress}
+      disabled={isDisabled}>
       <Typography align="center" size="l" color="alt">
         {text}
       </Typography>

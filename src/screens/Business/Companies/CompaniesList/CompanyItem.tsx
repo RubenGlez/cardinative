@@ -1,4 +1,4 @@
-import { Spacer, Typography } from '@/components'
+import { Typography } from '@/components'
 import React from 'react'
 import {
   CompanyItemContainer,
@@ -23,10 +23,6 @@ export default function CompanyItem({
         <CompanyItemRightContainer>
           <Typography size="m" color="secondary">
             {`${company.cards.length} tarjetas`}
-          </Typography>
-          <Spacer vertical="s" />
-          <Typography size="m" color="secondary">
-            {`${company.promotions.length} promos`}
           </Typography>
         </CompanyItemRightContainer>
       </CompanyItemInnerContainer>

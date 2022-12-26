@@ -11,7 +11,6 @@ import {
 import { Company, CompanyExtended } from '@/entities/Company'
 import useDeleteCompany from '@/hooks/company/useDeleteCompany'
 import useCardsGroupedByCompany from '@/hooks/card/useCardsGroupedByCompany'
-import usePromotionsGroupedByCompany from '@/hooks/promotion/usePromotionsGroupedByCompany'
 import useLiveSearch from '@/hooks/common/useLiveSearch'
 
 export default function useCompaniesScreen() {
@@ -19,15 +18,13 @@ export default function useCompaniesScreen() {
   const { navigate } = useNavigation<RootNavigation>()
   const { data: companies = [] } = useGetCompanies()
   const cardsGroupedByCompanyId = useCardsGroupedByCompany()
-  const promotionsGroupedByCompany = usePromotionsGroupedByCompany()
   const companiesList: CompanyExtended[] = useMemo(
     () =>
       companies.map(comp => ({
         ...comp,
-        cards: cardsGroupedByCompanyId[comp.id] ?? [],
-        promotions: promotionsGroupedByCompany[comp.id] ?? []
+        cards: cardsGroupedByCompanyId[comp.id] ?? []
       })),
-    [cardsGroupedByCompanyId, companies, promotionsGroupedByCompany]
+    [cardsGroupedByCompanyId, companies]
   )
   const { search, filteredOptions } = useLiveSearch({
     options: companiesList,

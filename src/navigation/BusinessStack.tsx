@@ -12,9 +12,13 @@ import {
   BUSINESS_COMPANIES_SCREEN,
   BUSINESS_CARDS_SCREEN,
   BUSINESS_PROMOTIONS_SCREEN,
-  BUSINESS_SETTINGS_SCREEN
+  BUSINESS_SETTINGS_SCREEN,
+  BUSINESS_PROFILE_SCREEN,
+  BUSINESS_PREFERENCES_SCREEN
 } from './constants'
 import {
+  BusinessPreferences,
+  BusinessProfile,
   BusinessSettings,
   Cards,
   Companies,
@@ -53,6 +57,13 @@ export function BusinessStack() {
       <Screen name={BUSINESS_EDIT_PROMOTION_SCREEN} component={EditPromotion} />
 
       <Screen name={BUSINESS_SETTINGS_SCREEN} component={BusinessSettings} />
+
+      <Screen name={BUSINESS_PROFILE_SCREEN} component={BusinessProfile} />
+
+      <Screen
+        name={BUSINESS_PREFERENCES_SCREEN}
+        component={BusinessPreferences}
+      />
     </Navigator>
   )
 }

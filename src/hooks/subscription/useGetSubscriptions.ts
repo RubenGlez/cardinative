@@ -4,13 +4,13 @@ import { useQuery } from '@/lib/queryClient'
 import { QueryKeys } from '@/lib/queryClient/types'
 
 export default function useGetSubscriptions(
-  promotionId: Subscription['promotion']
+  companyId: Subscription['company']
 ) {
   return useQuery(
-    [QueryKeys.Subscriptions, promotionId],
-    () => getSubscriptionsRequest(promotionId),
+    [QueryKeys.Subscriptions, companyId],
+    () => getSubscriptionsRequest(companyId),
     {
-      enabled: !!promotionId
+      enabled: !!companyId
     }
   )
 }

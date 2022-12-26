@@ -20,5 +20,4 @@ export interface Company {
 
 export interface CompanyExtended extends Company {
   cards: Card[]
-  promotions: Promotion[]
 }

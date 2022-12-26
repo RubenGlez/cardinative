@@ -1,17 +1,18 @@
+import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { StyledInputProps } from './types'
 
-export const StyledInput = styled.TextInput.attrs<StyledInputProps>(
+export const StyledInput = styled(TextInput).attrs<StyledInputProps>(
   ({ theme }) => ({
     placeholderTextColor: theme.color.text_inactive,
     autoCapitalize: 'none',
     autoCompleteType: 'off',
     autoCorrect: false
   })
-)<StyledInputProps>`
+) <StyledInputProps>`
   border-width: ${({ theme }) => theme.space.xs};
-  border-color: ${({ theme, isFocused }) =>
-    isFocused ? theme.color.bg_5 : theme.color.bg_4};
+  border-color: ${({ theme, hasFocus }) =>
+    hasFocus ? theme.color.bg_5 : theme.color.bg_4};
   border-radius: ${({ theme }) => theme.radius.m};
   background-color: ${({ theme }) => theme.color.bg_1};
   font-size: ${({ theme, size }) =>

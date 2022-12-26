@@ -14,13 +14,34 @@ import {
 import { FlatList } from 'react-native'
 import useMetrics from '@/hooks/metrics/useMetrics'
 import { Promotion } from '@/entities'
+import { useNavigation } from '@react-navigation/native'
+import {
+  BUSINESS_EDIT_PROMOTION_SCREEN,
+  BUSINESS_STACK,
+  ROLE_STACK
+} from '@/navigation/constants'
+import { RootNavigation } from '@/navigation/types'
 
 export default function Home() {
   const {
     onDatePromotionsSortedBySubscriptions,
     promotionsOutDate,
-    onDatePromotionsSortedByCompletedSubscriptions
+    onDatePromotionsSortedByCompletedSubscriptions,
+    subscriptionsCounterByPromotionId
   } = useMetrics()
+  const { navigate } = useNavigation<RootNavigation>()
+  const handlePressPromo = (id: string) => () => {
+    navigate(ROLE_STACK, {
+      screen: BUSINESS_STACK,
+      params: {
+        screen: BUSINESS_EDIT_PROMOTION_SCREEN,
+        params: {
+          promotionIdToEdit: id
+        }
+      }
+    })
+  }
+
   return (
     <HomeContainer>
       <HomeSection>
@@ -36,7 +57,9 @@ export default function Home() {
             renderItem={({ item, index }) => {
               const promo = item as Promotion
               return (
-                <MostFollowedCard key={promo.id}>
+                <MostFollowedCard
+                  key={`bySubs_${promo?.id}`}
+                  onPress={handlePressPromo(promo?.id)}>
                   <MostFollowedCardLeftSide>
                     <Typography size="xl" color="primary" align="center">
                       {`#${index + 1}`}
@@ -45,12 +68,14 @@ export default function Home() {
                   <MostFollowedCardRightSide>
                     <MostFollowedCardRightSideTop>
                       <Typography size="m" color="primary">
-                        {promo.name}
+                        {promo?.name}
                       </Typography>
                     </MostFollowedCardRightSideTop>
                     <MostFollowedCardRightSideBottom>
                       <Typography size="m" color="primary">
-                        {`000 subs`}
+                        {`${
+                          subscriptionsCounterByPromotionId[promo?.id]
+                        } subscripciones`}
                       </Typography>
                     </MostFollowedCardRightSideBottom>
                   </MostFollowedCardRightSide>
@@ -73,7 +98,9 @@ export default function Home() {
             renderItem={({ item, index }) => {
               const promo = item as Promotion
               return (
-                <MostFollowedCard key={promo.id}>
+                <MostFollowedCard
+                  key={`byCompletedSubs_${promo?.id}`}
+                  onPress={handlePressPromo(promo?.id)}>
                   <MostFollowedCardLeftSide>
                     <Typography size="xl" color="primary" align="center">
                       {`#${index + 1}`}
@@ -82,12 +109,14 @@ export default function Home() {
                   <MostFollowedCardRightSide>
                     <MostFollowedCardRightSideTop>
                       <Typography size="m" color="primary">
-                        {promo.name}
+                        {promo?.name}
                       </Typography>
                     </MostFollowedCardRightSideTop>
                     <MostFollowedCardRightSideBottom>
                       <Typography size="m" color="primary">
-                        {`000 subs completadas`}
+                        {`${
+                          subscriptionsCounterByPromotionId[promo?.id]
+                        } subscripciones completadas`}
                       </Typography>
                     </MostFollowedCardRightSideBottom>
                   </MostFollowedCardRightSide>
@@ -110,7 +139,9 @@ export default function Home() {
             renderItem={({ item, index }) => {
               const promo = item as Promotion
               return (
-                <MostFollowedCard key={promo.id}>
+                <MostFollowedCard
+                  key={`byOutdatedSubs_${promo?.id}`}
+                  onPress={handlePressPromo(promo?.id)}>
                   <MostFollowedCardLeftSide>
                     <Typography size="xl" color="primary" align="center">
                       {`#${index + 1}`}
@@ -119,7 +150,7 @@ export default function Home() {
                   <MostFollowedCardRightSide>
                     <MostFollowedCardRightSideTop>
                       <Typography size="m" color="primary">
-                        {promo.name}
+                        {promo?.name}
                       </Typography>
                     </MostFollowedCardRightSideTop>
                     <MostFollowedCardRightSideBottom>

@@ -59,6 +59,7 @@ export default function PromotionDetails({
 
         <Spacer vertical="l" />
         <Button
+          type="success"
           text={'Canjear'}
           onPress={handleGoToRedeem(promotion?.id ?? '')}
         />

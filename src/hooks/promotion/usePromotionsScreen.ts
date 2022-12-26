@@ -22,9 +22,9 @@ const DEFAULT_CARDS_FILTER_VALUE = '__all__'
 export default function usePromotionsScreen() {
   const [selectedPromotion, setSelectedPromotion] = useState<Promotion>()
   const { navigate } = useNavigation<RootNavigation>()
-  const { data: promotions = [] } = useGetPromotions()
-  const { data: cards = [] } = useGetCards()
   const currentCompany = useGetCurrentCompany()
+  const { data: promotions = [] } = useGetPromotions(currentCompany?.id ?? '')
+  const { data: cards = [] } = useGetCards()
   const cardsFilterOptions = useMemo(() => {
     const opts = cards
       .filter(card => {
@@ -43,12 +43,10 @@ export default function usePromotionsScreen() {
   const promotionsList = useMemo(
     () =>
       promotions.filter(promo => {
-        if (!currentCompany?.id) return true
-        if (promo.company !== currentCompany?.id) return false
         if (cardsFilterValue === DEFAULT_CARDS_FILTER_VALUE) return true
         return promo.card === cardsFilterValue
       }),
-    [cardsFilterValue, currentCompany?.id, promotions]
+    [cardsFilterValue, promotions]
   )
   const { search, filteredOptions } = useLiveSearch({
     options: promotionsList,
@@ -96,17 +94,14 @@ export default function usePromotionsScreen() {
     })
   }, [navigate])
   const handleGoToRedeem = useCallback(
-    (promotionId: Promotion['id']) => () => {
+    () => () => {
       handleCloseDetails()
       navigate(ROLE_STACK, {
         screen: BUSINESS_STACK,
         params: {
           screen: BUSINESS_TABS_STACK,
           params: {
-            screen: BUSINESS_CREATE_SUBSCRIPTION_SCREEN,
-            params: {
-              promotionId
-            }
+            screen: BUSINESS_CREATE_SUBSCRIPTION_SCREEN
           }
         }
       })

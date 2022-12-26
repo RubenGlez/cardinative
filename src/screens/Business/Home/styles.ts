@@ -18,7 +18,7 @@ export const HomeSectionContent = styled.View`
   padding: 0 ${({ theme }) => theme.space.m};
 `
 
-export const MostFollowedCard = styled.View`
+export const MostFollowedCard = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.color.bg_1};
   height: 80px;
   border-radius: ${({ theme }) => theme.space.s};

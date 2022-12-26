@@ -4,9 +4,9 @@ export interface User {
   password: string
   username?: string
   role: UserRole
-  lastLoginAt?: Date
-  createdAt?: Date
-  updatedAt?: Date
+  lastLoginAt?: string
+  createdAt?: string
+  updatedAt?: string
 }
 
 export enum UserRole {

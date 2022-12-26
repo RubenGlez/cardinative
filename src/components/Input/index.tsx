@@ -3,17 +3,17 @@ import { StyledInput } from './styles'
 import { InputProps, FocusEvent } from './types'
 
 export default function Input({ size = 'big', ...nativeProps }: InputProps) {
-  const [isFocused, setIsFocused] = useState(false)
+  const [hasFocus, seHasFocus] = useState(false)
   const onFocus = useCallback(
     (event: FocusEvent) => {
-      setIsFocused(true)
+      seHasFocus(true)
       nativeProps.onFocus?.(event)
     },
     [nativeProps]
   )
   const onBlur = useCallback(
     (event: FocusEvent) => {
-      setIsFocused(false)
+      seHasFocus(false)
       nativeProps.onBlur?.(event)
     },
     [nativeProps]
@@ -22,10 +22,10 @@ export default function Input({ size = 'big', ...nativeProps }: InputProps) {
   return (
     <StyledInput
       {...nativeProps}
-      size={size}
       onFocus={onFocus}
       onBlur={onBlur}
-      isFocused={isFocused}
+      size={size}
+      hasFocus={hasFocus}
     />
   )
 }

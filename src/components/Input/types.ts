@@ -12,5 +12,5 @@ export type FocusEvent = NativeSyntheticEvent<TextInputFocusEventData>
 
 export interface StyledInputProps {
   size: InputProps['size']
-  isFocused: boolean
+  hasFocus: boolean
 }

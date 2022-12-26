@@ -9,7 +9,11 @@
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "npm run lint --fix",
     "typecheck": "tsc --project ./tsconfig.json",
-    "setup": "sh ./scripts/setup.sh"
+    "setup": "sh ./scripts/setup.sh",
+    "device:list": "adb devices",
+    "device:reversePort": "adb reverse tcp:3000 tcp:3000",
+    "clean:android": "cd android && ./gradlew clean && cd ../",
+    "clean:ios": "cd android && xcodebuild clean && cd ../"
   },
   "dependencies": {
     "@react-native-community/netinfo": "^9.1.0",
@@ -33,7 +37,8 @@
     "react-native-vector-icons": "^9.2.0",
     "react-native-vision-camera": "^2.15.2",
     "react-query": "^3.39.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "vision-camera-code-scanner": "^0.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

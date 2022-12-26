@@ -1,120 +1,104 @@
-import React, { useState } from 'react'
-import { Button, Camera, Selector, Spacer, Typography } from '@/components'
+import React, { useCallback, useState } from 'react'
+import { Button, QRScanner, Spacer, Typography } from '@/components'
 import useCreateSubscription from '@/hooks/subscription/useCreateSubscription'
-import { RouteProp, useRoute } from '@react-navigation/native'
-import { BusinessTabsStackParamsList } from '@/navigation/types'
 import useUpdateSubscription from '@/hooks/subscription/useUpdateSubscription'
-import { CreateSubscriptionContainer } from './styles'
+import {
+  ButtonsContainer,
+  CreateSubscriptionContainer,
+  QRSCannerBackside
+} from './styles'
+import useNotifications from '@/hooks/components/useNotifications'
 
-enum Progress {
-  waiting = 'waiting',
-  creatingSubscription = 'creatingSubscription',
-  updatingSubscription = 'updatingSubscription',
-  finished = 'finished',
-  errorUpdating = 'errorUpdating',
-  unknownErrorCreating = 'unknownErrorCreating'
+interface QRDataI {
+  subscriptorId: string
+  promotionId: string
 }
 export default function CreateSubscription() {
-  const [progress, setProgress] = useState<Progress[]>([])
-  const {
-    params: { promotionId }
-  } =
-    useRoute<
-      RouteProp<BusinessTabsStackParamsList, 'BusinessCreateSubscription'>
-    >()
-  const [selectedUserId, setselectedUserId] = useState(
-    '6361436714f451df6db5c321'
-  )
+  const [QRData, setQRData] = useState<QRDataI>()
+  const { showErrorToast, showSuccessToast } = useNotifications()
 
-  const handleSuccess = () => {
-    setProgress(prev => {
-      return [...prev, Progress.finished]
+  const handleUpdateSuccess = () => {
+    showSuccessToast({
+      text1: 'Subscripción actualizada'
     })
   }
   const handleUpdateError = () => {
-    setProgress(prev => {
-      return [...prev, Progress.errorUpdating]
+    showErrorToast({
+      text1: 'Error actualizando la subscripción'
     })
   }
   const { mutate: mutateUpdate } = useUpdateSubscription({
-    handleSuccess,
+    handleSuccess: handleUpdateSuccess,
     handleError: handleUpdateError
   })
 
-  const handleError = (error: any) => {
+  const handleCreateSuccess = () => {
+    showSuccessToast({
+      text1: 'Subscripción creada'
+    })
+  }
+  const handleCreateError = (error: any) => {
     if (error.name === 'SubscriptionAlreadyExist') {
-      setProgress(prev => {
-        return [...prev, Progress.updatingSubscription]
-      })
       mutateUpdate({
         id: error.info.id
       })
     } else {
-      setProgress(prev => {
-        return [...prev, Progress.unknownErrorCreating]
+      showErrorToast({
+        text1: 'Error creando la subscripción'
       })
     }
   }
-
   const { mutate: mutateCreate } = useCreateSubscription({
-    handleError,
-    handleSuccess
+    handleSuccess: handleCreateSuccess,
+    handleError: handleCreateError
   })
 
-  const handleCreateSubscription = () => {
-    setProgress(prev => {
-      return [...prev, Progress.creatingSubscription]
-    })
+  const handleCreateSubscription = useCallback(() => {
+    if (!QRData) return
     mutateCreate({
-      promotion: promotionId,
-      subscriptor: selectedUserId
+      promotion: QRData.promotionId,
+      subscriptor: QRData.subscriptorId
     })
+  }, [QRData, mutateCreate])
+
+  const onReadQR = (value: string) => {
+    const JSONvalue = JSON.parse(value)
+    const { subscriptorId, promotionId } = JSONvalue
+    if (!!subscriptorId && !!promotionId) {
+      setQRData(JSONvalue)
+    }
+  }
+
+  const handleCancel = () => {
+    setQRData(undefined)
   }
 
   return (
     <CreateSubscriptionContainer>
-      <Camera />
-      <Typography>{`Promoción: ${promotionId}`}</Typography>
-      <Spacer vertical="l" />
-      <Selector
-        options={[
-          {
-            label: 'basic@gmail.com',
-            value: '6361436714f451df6db5c321'
-          },
-          {
-            label: 'basic1@gmail.com',
-            value: '6378bb0e5031172ecbe55a5b'
-          }
-        ]}
-        selected={selectedUserId}
-        placeholder={'Selecciona usuario'}
-        onSelect={selected => {
-          setselectedUserId(selected)
-        }}
-      />
-      <Spacer vertical="xl" />
-      {progress.includes(Progress.waiting) && (
-        <Typography>Vamos allá!</Typography>
-      )}
-      {progress.includes(Progress.creatingSubscription) && (
-        <Typography>Creando subscripción</Typography>
-      )}
-      {progress.includes(Progress.updatingSubscription) && (
-        <Typography>Actualizando subscripción</Typography>
-      )}
-      {progress.includes(Progress.finished) && (
-        <Typography>Subscripción canjeada</Typography>
-      )}
-      {progress.includes(Progress.errorUpdating) && (
-        <Typography>Error actualizando la subscripción</Typography>
-      )}
-      {progress.includes(Progress.unknownErrorCreating) && (
-        <Typography>Error desconocido creando la subscripción</Typography>
-      )}
-      <Spacer vertical="xl" />
+      <Typography>Escanéa el QR</Typography>
 
-      <Button text={'Crear subscripción'} onPress={handleCreateSubscription} />
+      <Spacer vertical="l" />
+
+      {QRData ? (
+        <QRSCannerBackside>
+          <Typography size="xl">QR detectado</Typography>
+        </QRSCannerBackside>
+      ) : (
+        <QRScanner onReadQR={onReadQR} />
+      )}
+
+      <Spacer vertical="l" />
+
+      {QRData && (
+        <ButtonsContainer>
+          <Button type="danger" text="Cancelar" onPress={handleCancel} />
+          <Button
+            type={'primary'}
+            text="Aceptar"
+            onPress={handleCreateSubscription}
+          />
+        </ButtonsContainer>
+      )}
     </CreateSubscriptionContainer>
   )
 }

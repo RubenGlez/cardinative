@@ -19,6 +19,8 @@ import {
   BUSINESS_EDIT_COMPANY_SCREEN,
   BUSINESS_EDIT_PROMOTION_SCREEN,
   BUSINESS_HOME_SCREEN,
+  BUSINESS_PREFERENCES_SCREEN,
+  BUSINESS_PROFILE_SCREEN,
   BUSINESS_PROMOTIONS_SCREEN,
   BUSINESS_SETTINGS_SCREEN,
   BUSINESS_STACK,
@@ -69,6 +71,9 @@ export type BusinessStackParamsList = {
   }
 
   [BUSINESS_SETTINGS_SCREEN]: undefined
+
+  [BUSINESS_PROFILE_SCREEN]: undefined
+  [BUSINESS_PREFERENCES_SCREEN]: undefined
 }
 
 export type BasicTabsStackParamsList = {
@@ -79,9 +84,7 @@ export type BasicTabsStackParamsList = {
 
 export type BusinessTabsStackParamsList = {
   [BUSINESS_HOME_SCREEN]: undefined
-  [BUSINESS_CREATE_SUBSCRIPTION_SCREEN]: {
-    promotionId: Promotion['id']
-  }
+  [BUSINESS_CREATE_SUBSCRIPTION_SCREEN]: undefined
   [BUSINESS_PROMOTIONS_SCREEN]: undefined
 }
 

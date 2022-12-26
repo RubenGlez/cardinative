@@ -9,6 +9,8 @@ import { useNavigation } from '@react-navigation/native'
 import {
   BUSINESS_CARDS_SCREEN,
   BUSINESS_COMPANIES_SCREEN,
+  BUSINESS_PREFERENCES_SCREEN,
+  BUSINESS_PROFILE_SCREEN,
   BUSINESS_STACK,
   ROLE_STACK
 } from '@/navigation/constants'
@@ -29,7 +31,14 @@ export default function Settings() {
       </SettingsHeader>
       <SettingsContent>
         <SettingsItem
-          onPress={() => {}}
+          onPress={() => {
+            navigate(ROLE_STACK, {
+              screen: BUSINESS_STACK,
+              params: {
+                screen: BUSINESS_PROFILE_SCREEN
+              }
+            })
+          }}
           label={'Perfil'}
           icon={'person-outline'}
         />
@@ -58,7 +67,14 @@ export default function Settings() {
           icon={'card-outline'}
         />
         <SettingsItem
-          onPress={() => {}}
+          onPress={() => {
+            navigate(ROLE_STACK, {
+              screen: BUSINESS_STACK,
+              params: {
+                screen: BUSINESS_PREFERENCES_SCREEN
+              }
+            })
+          }}
           label={'Preferencias'}
           icon={'construct-outline'}
         />
