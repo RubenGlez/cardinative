@@ -9,14 +9,11 @@ export default function Profile() {
   const { formatStringDate } = useIntl()
 
   return (
-    <ScreenLayout title="Edita el perfil">
+    <ScreenLayout title="Perfil">
       <ProfileContainer>
-        <Typography size="xl">{'Datos del usuario'}</Typography>
-        <Spacer vertical="l" />
-        <Typography>{username}</Typography>
+        <Typography size="l">{username}</Typography>
         <Typography>{email}</Typography>
         <Spacer vertical="l" />
-
         <Typography>
           {`Registro: ${createdAt ? formatStringDate(createdAt) : '--'}`}
         </Typography>
