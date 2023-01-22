@@ -6,5 +6,6 @@ export enum QueryKeys {
   Promotions = 'promotions',
   Subscriptions = 'subscriptions',
   Users = 'users',
-  Wallet = 'wallet'
+  Wallet = 'wallet',
+  Metrics = 'metrics'
 }

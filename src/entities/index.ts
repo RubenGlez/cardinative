@@ -1,6 +1,7 @@
 export * from './Auth'
 export * from './Card'
 export * from './Company'
+export * from './Metrics'
 export * from './Preferences'
 export * from './Promotion'
 export * from './Subscription'
