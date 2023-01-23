@@ -127,9 +127,9 @@ PODS:
     - MLImage (= 1.0.0-beta3)
     - MLKitCommon (~> 8.0)
     - Protobuf (~> 3.12)
-  - MMKV (1.2.10):
-    - MMKVCore (~> 1.2.10)
-  - MMKVCore (1.2.14)
+  - MMKV (1.2.13):
+    - MMKVCore (~> 1.2.13)
+  - MMKVCore (1.2.15)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
@@ -361,8 +361,8 @@ PODS:
     - React-Core
   - react-native-flipper (0.164.0):
     - React-Core
-  - react-native-mmkv-storage (0.7.6):
-    - MMKV (= 1.2.10)
+  - react-native-mmkv-storage (0.8.0):
+    - MMKV (= 1.2.13)
     - React-Core
   - react-native-netinfo (9.3.7):
     - React-Core
@@ -720,8 +720,8 @@ SPEC CHECKSUMS:
   MLKitBarcodeScanning: d92fe1911001ec36870162c5a0eb206f612b7169
   MLKitCommon: f6da6c5659618c070b50a80db01248ebe2964175
   MLKitVision: 96c96571190b7f63eddf4a12068ce8a8689e0d2c
-  MMKV: 76033b9ace2006623308910a3afcc0e25eba3140
-  MMKVCore: 89f5c8a66bba2dcd551779dea4d412eeec8ff5bb
+  MMKV: aac95d817a100479445633f2b3ed8961b4ac5043
+  MMKVCore: ddf41b9d9262f058419f9ba7598719af56c02cd3
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
@@ -742,7 +742,7 @@ SPEC CHECKSUMS:
   React-logger: 60a0b5f8bed667ecf9e24fecca1f30d125de6d75
   react-native-date-picker: 93e43b3084cea595b4d68b1405d6d99849663bd6
   react-native-flipper: c33a4995958ef12a2b2f8290d63bed7adeed7634
-  react-native-mmkv-storage: ba38e5e813ea3d5d37af834a9d867b1ce10aa96d
+  react-native-mmkv-storage: 8ba3c0216a6df283ece11205b442a3e435aec4e5
   react-native-netinfo: 2517ad504b3d303e90d7a431b0fcaef76d207983
   react-native-safe-area-context: 39c2d8be3328df5d437ac1700f4f3a4f75716acc
   React-perflogger: ec8eef2a8f03ecfa6361c2c5fb9197ef4a29cc85
