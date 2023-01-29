@@ -1,5 +1,4 @@
 import { Card } from './Card'
-import { Promotion } from './Promotion'
 import { User } from './User'
 
 export interface Contact {

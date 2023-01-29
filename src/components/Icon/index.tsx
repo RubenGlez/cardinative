@@ -26,7 +26,7 @@ export default function Icon({
       name={name}
       size={SIZES[size]}
       color={color ?? defaultColor}
-      onPress={onPress}
+      onPress={onPress as any} // TODO: fix this
     />
   )
 }

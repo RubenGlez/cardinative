@@ -9,7 +9,7 @@ export const StyledInput = styled(TextInput).attrs<StyledInputProps>(
     autoCompleteType: 'off',
     autoCorrect: false
   })
-) <StyledInputProps>`
+)<StyledInputProps>`
   border-width: ${({ theme }) => theme.space.xs};
   border-color: ${({ theme, hasFocus }) =>
     hasFocus ? theme.color.bg_5 : theme.color.bg_4};

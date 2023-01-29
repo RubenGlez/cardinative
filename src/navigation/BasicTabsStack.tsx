@@ -1,5 +1,8 @@
 import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import {
+  BottomTabBarProps,
+  createBottomTabNavigator
+} from '@react-navigation/bottom-tabs'
 
 import { BasicTabsStackParamsList } from './types'
 import { TabBar } from '@/components'
@@ -13,11 +16,13 @@ import {
 const { Navigator, Screen } =
   createBottomTabNavigator<BasicTabsStackParamsList>()
 
+const tabBar = (props: BottomTabBarProps) => <TabBar {...props} />
+
 export function BasicTabsStack() {
   return (
     <Navigator
       initialRouteName={BASIC_HOME_SCREEN}
-      tabBar={props => <TabBar {...props} />}
+      tabBar={tabBar}
       screenOptions={{ headerShown: false }}>
       <Screen
         name={BASIC_HOME_SCREEN}

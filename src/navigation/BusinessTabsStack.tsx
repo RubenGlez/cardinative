@@ -1,5 +1,9 @@
 import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import {
+  BottomTabBarProps,
+  BottomTabHeaderProps,
+  createBottomTabNavigator
+} from '@react-navigation/bottom-tabs'
 
 import { BusinessTabsStackParamsList } from './types'
 import { TabBar } from '@/components'
@@ -14,13 +18,16 @@ import { BusinessHome, Promotions, CreateSubscription } from '@/screens'
 const { Navigator, Screen } =
   createBottomTabNavigator<BusinessTabsStackParamsList>()
 
+const tabBar = (props: BottomTabBarProps) => <TabBar {...props} />
+const header = (props: BottomTabHeaderProps) => <BusinessHeader {...props} />
+
 export function BusinessTabsStack() {
   return (
     <Navigator
       initialRouteName={BUSINESS_HOME_SCREEN}
-      tabBar={props => <TabBar {...props} />}
+      tabBar={tabBar}
       screenOptions={{
-        header: props => <BusinessHeader {...props} />
+        header
       }}>
       <Screen
         name={BUSINESS_HOME_SCREEN}
