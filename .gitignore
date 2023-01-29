@@ -64,3 +64,5 @@ yarn-error.log
 
 # VS Code
 .vscode/
+
+.DS_Store

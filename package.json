@@ -4,16 +4,17 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios --simulator='iPhone 14 Pro'",
+    "ios": "react-native run-ios",
     "start": "react-native start",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "npm run lint --fix",
-    "typecheck": "tsc --project ./tsconfig.json",
-    "setup": "sh ./scripts/setup.sh",
+    "test": "jest",
+    "typecheck": "tsc --project ./tsconfig.json  --noEmit",
     "device:list": "adb devices",
     "device:reversePort": "adb reverse tcp:3000 tcp:3000",
-    "clean:android": "cd android && ./gradlew clean && cd ../",
-    "clean:ios": "cd android && xcodebuild clean && cd ../"
+    "clean:android": "cd android && ./gradlew clean && cd ..",
+    "clean:ios": "cd ios && xcodebuild clean && cd ..",
+    "format": "prettier --write ./src"
   },
   "dependencies": {
     "@react-native-community/netinfo": "^9.1.0",

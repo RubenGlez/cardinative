@@ -1,0 +1,57 @@
+name: Deployment Pipeline
+
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+
+  deploy-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build android
+        run: cd android && ./gradlew assembleRelease && cd ..
+
+      - name: Fake deploy
+        run: echo 'fake deploy done!'
+
+  deploy-ios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node v19
+        uses: actions/setup-node@v3
+        with:
+          cache: 'npm'
+          node-version: '19'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build iOS
+        run: cd ios && pod install && cd ..
+
+      - name: Fake deploy
+        run: echo 'fake deploy done!'
