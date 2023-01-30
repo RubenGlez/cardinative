@@ -5,7 +5,7 @@ import { QueryKeys } from '@/lib/queryClient/types'
 
 export default function useGetMetrics(companyId: Company['id'] | undefined) {
   return useQuery(
-    [QueryKeys.Preferences],
+    [QueryKeys.Metrics],
     () => getMetricsRequest(companyId ?? ''),
     {
       enabled: !!companyId

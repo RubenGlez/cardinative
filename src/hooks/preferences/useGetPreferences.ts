@@ -7,7 +7,11 @@ export default function useGetPreferences() {
   const currentUser = useGetCurrentUser()
   const userId = currentUser?.id
 
-  return useQuery([QueryKeys.Metrics], () => getPreferencesRequest(userId), {
-    enabled: !!userId
-  })
+  return useQuery(
+    [QueryKeys.Preferences],
+    () => getPreferencesRequest(userId),
+    {
+      enabled: !!userId
+    }
+  )
 }

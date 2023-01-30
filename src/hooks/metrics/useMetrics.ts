@@ -1,6 +1,6 @@
 import { PromotionMetrics } from '@/entities'
 import useGetCurrentCompany from '../company/useGetCurrentCompany'
-import useGetMetrics from './useGetPromotions'
+import useGetMetrics from './useGetMetrics'
 
 const emptyArray: PromotionMetrics[] = []
 
