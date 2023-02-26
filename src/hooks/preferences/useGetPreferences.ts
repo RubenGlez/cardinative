@@ -1,4 +1,4 @@
-import { getPreferencesRequest } from '@/lib/api/requests/business/preferences'
+import { getPreferencesRequest } from '@/lib/api/requests/common/preferences'
 import { useQuery } from '@/lib/queryClient'
 import { QueryKeys } from '@/lib/queryClient/types'
 import useGetCurrentUser from '../user/useGetCurrentUser'

@@ -11,14 +11,14 @@ export function updatePreferencesRequest(
   inputData: UpdatePreferencesInputData
 ) {
   return apiClient.put<UpdatePreferencesInputData, Preferences>(
-    `/business/preferences/${inputData.id}`,
+    `/common/preferences/${inputData.id}`,
     inputData
   )
 }
 
 export async function getPreferencesRequest(userId: User['id']) {
   const { data } = await apiClient.get<Preferences>(
-    `/business/preferences/?userId=${userId}`
+    `/common/preferences/?userId=${userId}`
   )
   return data
 }

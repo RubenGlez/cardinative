@@ -2,7 +2,7 @@ import { Preferences } from '@/entities/Preferences'
 import {
   UpdatePreferencesInputData,
   updatePreferencesRequest
-} from '@/lib/api/requests/business/preferences'
+} from '@/lib/api/requests/common/preferences'
 import { useMutation, useQueryClient } from '@/lib/queryClient'
 import { QueryKeys } from '@/lib/queryClient/types'
 

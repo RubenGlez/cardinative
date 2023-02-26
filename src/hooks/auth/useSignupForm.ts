@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { UserRole } from '@/entities'
-import { SignUpInputData, signupRequest } from '@/lib/api/requests/auth'
+import { SignUpInputData, signupRequest } from '@/lib/api/requests/common/auth'
 import { useFormik } from 'formik'
 import { useMutation } from '@/lib/queryClient'
 import useNotifications from '../components/useNotifications'

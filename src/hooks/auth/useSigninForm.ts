@@ -1,4 +1,4 @@
-import { signinRequest, SignInInputData } from '@/lib/api/requests/auth'
+import { signinRequest, SignInInputData } from '@/lib/api/requests/common/auth'
 import { useFormik } from 'formik'
 import { useMutation } from '@/lib/queryClient'
 import useNotifications from '../components/useNotifications'

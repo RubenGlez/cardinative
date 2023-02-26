@@ -1,5 +1,5 @@
 import { User } from '@/entities'
-import { getUserByIdRequest } from '@/lib/api/requests/business/user'
+import { getUserByIdRequest } from '@/lib/api/requests/common/user'
 import { useQuery } from '@/lib/queryClient'
 import { QueryKeys } from '@/lib/queryClient/types'
 
